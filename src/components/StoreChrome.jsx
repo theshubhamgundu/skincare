@@ -17,7 +17,6 @@ export function AnnouncementBar() {
     </div>
   );
 }
-
 export function StoreHeader({ cartCount }) {
   return (
     <>
@@ -31,21 +30,14 @@ export function StoreHeader({ cartCount }) {
           </form>
           <a className="absolute left-1/2 -translate-x-1/2 text-center whitespace-nowrap font-serif-luxury text-2xl sm:text-3xl tracking-[0.25em] font-medium text-stone-900 uppercase z-10" href="/">MIIKOREAN</a>
           <div className="ml-auto w-1/3 flex items-center justify-end gap-4 text-xs">
-            <a className="hidden sm:inline text-stone-700 hover:text-black" href="/login">Sign In</a>
             <a aria-label="Wishlist" className="text-stone-700 hover:text-black" href="/account/wishlist">♡</a>
             <a aria-label="Shopping bag" className="text-stone-700 hover:text-black" href="/cart">Bag{cartCount ? ` (${cartCount})` : ''}</a>
           </div>
         </div>
-        <nav className="hidden sm:flex items-center justify-center gap-8 border-t border-stone-100 py-3 text-[10px] uppercase tracking-widest text-stone-600" aria-label="Primary">
-          <a href="/collections/all" className="hover:text-stone-950">Shop</a>
-          <a href="/pages/about-us" className="hover:text-stone-950">About Us</a>
-          <a href="/pages/contact-us" className="hover:text-stone-950">Contact</a>
-        </nav>
       </header>
     </>
   );
 }
-
 export function StoreFooter() {
   return (
     <footer className="site-footer bg-brand-deepNight text-stone-300 py-16 px-6 sm:px-12 border-t border-stone-900 mt-16">
@@ -59,11 +51,7 @@ export function StoreFooter() {
     </footer>
   );
 }
-
 function FooterColumn({ title, links }) {
   return <div><h2 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">{title}</h2><ul className="space-y-2.5 text-xs text-stone-400 font-light">{links.map(([label, href]) => <li key={label}><a className="hover:text-white" href={href}>{label}</a></li>)}</ul></div>;
 }
 
-export function MobileNav({ showAccount }) {
-  return <nav className="mobile-bottom-nav" aria-label="Mobile navigation"><a href="/">⌂<span>Home</span></a><a href="/search">⌕<span>Search</span></a><a href="/#routine-steps">♧<span>Routine</span></a><a href="/account/wishlist">♡<span>Wishlist</span></a>{showAccount && <a href="/login">◯<span>Account</span></a>}</nav>;
-}

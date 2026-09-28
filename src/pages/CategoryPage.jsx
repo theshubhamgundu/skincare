@@ -88,15 +88,15 @@ export default function CategoryPage({ category, cartCount, onAddToBag }) {
           <h1 className="font-serif-luxury text-4xl sm:text-5xl uppercase tracking-[0.12em] font-normal text-stone-900 mb-4">{category.title}</h1>
           {category.description && <p className="text-sm text-stone-600 font-light leading-relaxed max-w-2xl mx-auto">{category.description}</p>}
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-[236px_minmax(0,1fr)] gap-8">
-          <aside className="hidden lg:block"><FilterPanel availableCount={availableCount} inStockOnly={inStockOnly} maxPrice={maxPrice} minPrice={minPrice} onAvailabilityChange={setInStockOnly} onMaxPriceChange={setMaxPrice} onMinPriceChange={setMinPrice} totalCount={products?.length ?? 0} /></aside>
-          <section>
-            <div className="flex items-center justify-between border-b border-stone-200 pb-4 mb-0 text-xs">
-              <button className="lg:hidden border border-stone-800 px-5 py-2 uppercase tracking-widest hover:bg-stone-900 hover:text-white" onClick={() => setFiltersOpen((open) => !open)} aria-expanded={filtersOpen}>Filters</button>
+        <section>
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-stone-200 pb-4 mb-0 text-xs">
               <p><strong>{products === null ? '…' : visibleProducts.length}</strong> products</p>
-              <label className="flex items-center gap-2">Sort by<select className="border border-stone-300 bg-white px-3 py-2" onChange={(event) => setSortOrder(event.target.value)} value={sortOrder}><option value="featured">Featured</option><option value="low-to-high">Price: low to high</option><option value="high-to-low">Price: high to low</option></select></label>
+              <div className="flex flex-wrap items-center justify-end gap-3">
+                <button aria-controls="collection-filters" aria-expanded={filtersOpen} className="border border-stone-800 px-4 py-2 uppercase tracking-widest hover:bg-stone-900 hover:text-white" onClick={() => setFiltersOpen((open) => !open)} type="button">Filters</button>
+                <label className="flex items-center gap-2">Sort by<select className="border border-stone-300 bg-white px-3 py-2" onChange={(event) => setSortOrder(event.target.value)} value={sortOrder}><option value="featured">Featured</option><option value="low-to-high">Price: low to high</option><option value="high-to-low">Price: high to low</option></select></label>
+              </div>
             </div>
-            {filtersOpen && <div className="lg:hidden mt-6"><FilterPanel availableCount={availableCount} inStockOnly={inStockOnly} maxPrice={maxPrice} minPrice={minPrice} onAvailabilityChange={setInStockOnly} onMaxPriceChange={setMaxPrice} onMinPriceChange={setMinPrice} totalCount={products?.length ?? 0} /></div>}
+            {filtersOpen && <div className="mt-6" id="collection-filters"><FilterPanel availableCount={availableCount} inStockOnly={inStockOnly} maxPrice={maxPrice} minPrice={minPrice} onAvailabilityChange={setInStockOnly} onMaxPriceChange={setMaxPrice} onMinPriceChange={setMinPrice} totalCount={products?.length ?? 0} /></div>}
             {loadError ? <p className="py-10 text-sm text-stone-600" role="status">Products could not be loaded right now. Please try again later.</p> : products === null ? <p className="py-10 text-sm text-stone-600" role="status">Loading products…</p> : visibleProducts.length === 0 ? <p className="py-10 text-sm text-stone-600">No products found.</p> : (
               <ul className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 pt-6" aria-label={`${category.title} products`}>
                 {visibleProducts.map((item) => {
@@ -107,8 +107,7 @@ export default function CategoryPage({ category, cartCount, onAddToBag }) {
                 })}
               </ul>
             )}
-          </section>
-        </div>
+        </section>
       </main>
       <StoreFooter />
     </>

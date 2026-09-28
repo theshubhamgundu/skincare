@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { categories, commerceProductByHandle, commerceProducts } from './catalog.js';
 import { createCartLine, defaultCookiePreferences, readCartItems, readCookiePreferences, readWishlistHandles, cookieConsentStorageKey } from './lib/store.js';
-import { AnnouncementBar, MobileNav, StoreFooter, StoreHeader } from './components/StoreChrome.jsx';
+import { AnnouncementBar, StoreFooter, StoreHeader } from './components/StoreChrome.jsx';
 import CategoryPage from './pages/CategoryPage.jsx';
 import { homepageMarkup } from './pages/homepageTemplate.js';
 import { CartPage, CheckoutPage, ProductPage, SearchPage, WishlistPage } from './pages/CommercePages.jsx';
@@ -232,6 +232,8 @@ export default function App() {
   }, [handleAddToBag, toggleWishlist, wishlistHandles]);
 
   useEffect(() => {
+    if (categories[currentPath]) return undefined;
+
     const revealItems = [...document.querySelectorAll('section, article, .brand-tile, .review-item, main > div')];
     revealItems.forEach((item) => {
       item.classList.add('scroll-reveal');
@@ -257,7 +259,6 @@ export default function App() {
     <>
       {category ? <CategoryPage category={category} cartCount={cartCount} onAddToBag={handleAddToBag} /> : commerceProduct ? <ProductPage cartCount={cartCount} onAddToBag={handleAddToBag} onToggleWishlist={toggleWishlist} product={commerceProduct} saved={wishlistHandles.includes(commerceProduct.handle)} /> : currentPath === '/cart' ? <CartPage cartCount={cartCount} cartItems={cartItems} onAddToBag={handleAddToBag} onRemove={removeCartItem} onUpdateCartItem={updateCartItem} /> : currentPath === '/checkout' ? <CheckoutPage cartCount={cartCount} cartItems={cartItems} /> : currentPath === '/account/wishlist' ? <WishlistPage cartCount={cartCount} handles={wishlistHandles} onAddToBag={handleAddToBag} onToggleWishlist={toggleWishlist} /> : currentPath === '/search' ? <SearchPage cartCount={cartCount} onAddToBag={handleAddToBag} query={searchQuery} /> : informationPage ? <InformationPage page={informationPage} cartCount={cartCount} /> : currentPath === '/ingredients' ? <IngredientPage cartCount={cartCount} /> : <><AnnouncementBar /><div dangerouslySetInnerHTML={{ __html: homepageMarkup }} /></>}
       {showCookieConsent && <CookieConsent initialPreferences={cookiePreferences} onSave={saveCookiePreferences} />}
-      <MobileNav showAccount={Boolean(category || informationPage || currentPath === '/ingredients')} />
       {cartMessage && (
         <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 bg-stone-950 text-white px-5 py-3 text-xs shadow-xl" role="status">
           {cartMessage}
