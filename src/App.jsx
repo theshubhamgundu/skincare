@@ -1,122 +1,78 @@
 import { useEffect, useState } from 'react';
-import source from '../code.html?raw';
-import { categories, navigation } from './catalog.js';
+import { categories, commerceProductByHandle, commerceProducts } from './catalog.js';
+import { createCartLine, defaultCookiePreferences, readCartItems, readCookiePreferences, readWishlistHandles, cookieConsentStorageKey } from './lib/store.js';
+import { AnnouncementBar, MobileNav, StoreFooter, StoreHeader } from './components/StoreChrome.jsx';
+import CategoryPage from './pages/CategoryPage.jsx';
+import { homepageMarkup } from './pages/homepageTemplate.js';
+import { CartPage, CheckoutPage, ProductPage, SearchPage, WishlistPage } from './pages/CommercePages.jsx';
 
-const bodyMarkup = source.match(/<body[^>]*>([\s\S]*)<\/body>/i)?.[1] ?? '';
-const pageMarkup = bodyMarkup.replace(
-  /<!-- BEGIN: CookieConsentModal -->[\s\S]*?<!-- END: CookieConsentModal -->/i,
-  '',
-);
-
-const announcements = [
-  'Fast 1–2 day UK dispatch',
-  '100% genuine Korean skincare',
-  'Ingredient conflicts checked at checkout',
-  'FREE UK DELIVERY ON ORDERS OVER £40',
-];
-
-function AnnouncementBar() {
-  const [announcementIndex, setAnnouncementIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = window.setInterval(() => setAnnouncementIndex((index) => (index + 1) % announcements.length), 4000);
-    return () => window.clearInterval(timer);
-  }, []);
-
-  return <div className="announcement-bar" key={announcements[announcementIndex]}>{announcements[announcementIndex]}</div>;
+function IngredientPage({ cartCount }) {
+  return <><StoreHeader cartCount={cartCount} /><main id="main" className="max-w-7xl mx-auto px-4 sm:px-6 py-8"><nav className="text-xs text-stone-500 mb-10"><a href="/">Home</a><span className="mx-2">/</span>Ingredient glossary</nav><section className="bg-[#F6EEE5] px-8 py-16 mb-12"><p className="text-[11px] tracking-[0.2em] uppercase text-stone-500 mb-3">Ingredient glossary</p><h1 className="font-serif-luxury text-4xl sm:text-6xl uppercase tracking-[0.12em] text-stone-900 max-w-3xl">Know what’s in it before it’s on your face.</h1><p className="text-sm text-stone-600 font-light leading-relaxed max-w-2xl mt-5">Every product lists its full INCI, key ingredients and known conflicts. Browse by name to see what an ingredient does, which of our products contain it, and what to avoid layering it with.</p></section><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{['Centella asiatica', 'Niacinamide', 'Snail mucin', 'Hyaluronic acid', 'Vitamin C', 'AHA / BHA'].map((ingredient) => <a key={ingredient} href="#" className="border border-stone-200 p-6 text-sm uppercase tracking-widest hover:bg-stone-900 hover:text-white">{ingredient}</a>)}</div></main><StoreFooter /></>;
 }
 
-function StoreHeader({ cartCount }) {
-  return (
-    <>
-      <AnnouncementBar />
-      <header className="bg-white border-b border-stone-100 sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between gap-6">
-          <label className="w-1/3 max-w-xs relative hidden sm:block">
-            <span className="sr-only">Search products, ingredients and concerns</span>
-            <input className="w-full text-xs placeholder:text-stone-400 bg-transparent border-b border-stone-300 py-1.5 pr-8 pl-0 text-stone-800 focus:outline-none focus:border-stone-900" placeholder="Search products, ingredients and concerns" />
-          </label>
-          <a className="flex-1 text-center font-serif-luxury text-2xl sm:text-3xl tracking-[0.25em] font-medium text-stone-900 uppercase" href="/">MIIKOREAN</a>
-          <div className="w-1/3 flex items-center justify-end gap-4 text-xs">
-            <a className="text-stone-700 hover:text-black" href="/login">Sign In</a>
-            <a aria-label="Wishlist" className="text-stone-700 hover:text-black" href="#">♡</a>
-            <a aria-label="Shopping bag" className="text-stone-700 hover:text-black" href="#">Bag{cartCount ? ` (${cartCount})` : ''}</a>
-          </div>
-        </div>
-      </header>
-    </>
-  );
-}
+const informationPages = {
+  '/policies/shipping-policy': {
+    title: 'Shipping policy',
+    sections: [
+      { title: 'Processing Times', paragraphs: ['Orders are typically processed within 1–3 business days.'] },
+      { title: 'Delivery Times', paragraphs: ['United Kingdom deliveries typically arrive within 3–7 business days after dispatch.', 'Please note that delivery times are estimates and may vary during busy periods, public holidays, or due to courier delays.'] },
+      { title: 'Order Tracking', paragraphs: ['Where available, tracking information will be provided once your order has been dispatched.'] },
+      { title: 'Incorrect Addresses', paragraphs: ['Customers are responsible for providing accurate shipping information. We are not responsible for orders shipped to incorrect addresses supplied at checkout.'] },
+      { title: 'Lost or Delayed Orders', paragraphs: ['If your order has not arrived within the expected timeframe, contact support@skinofkorea.co.uk and we will investigate with the courier.'] },
+    ],
+  },
+  '/policies/refund-policy': {
+    title: 'Refund policy',
+    sections: [
+      { title: 'Returns', paragraphs: ['You may return unused and unopened products within 14 days of delivery for a refund.'], bullets: ['Be unopened', 'Be unused', 'Be in their original packaging', 'Be in a resellable condition'] },
+      { title: 'Non-Returnable Items', paragraphs: ['For hygiene and safety reasons, we cannot accept returns of:'], bullets: ['Opened skincare products', 'Used products', 'Gift cards', 'Sale items (unless faulty)'] },
+      { title: 'Damaged or Incorrect Items', paragraphs: ['If you receive a damaged, defective, or incorrect item, please contact us within 48 hours of delivery and include photographs where possible.'] },
+      { title: 'Refund Processing', paragraphs: ['Approved refunds will be processed to the original payment method within 5–10 business days after the returned item has been received and inspected.'] },
+      { title: 'Return Costs', paragraphs: ['Unless the item is faulty or incorrect, customers are responsible for return shipping costs.', 'For return enquiries contact support@skinofkorea.co.uk.'] },
+    ],
+  },
+  '/pages/faq': {
+    title: 'Frequently Asked Questions',
+    sections: [
+      { title: 'Are your products authentic?', paragraphs: ['Yes. We only stock genuine Korean skincare products sourced from trusted suppliers and distributors.'] },
+      { title: 'How long does delivery take?', paragraphs: ['Orders are typically processed within 1–3 business days. UK delivery usually takes 3–7 business days after dispatch.'] },
+      { title: 'Can I return my order?', paragraphs: ['Yes. Unopened and unused products may be returned within 14 days of delivery. Please see our Returns Policy for full details.'] },
+      { title: 'What if my item arrives damaged?', paragraphs: ['If your order arrives damaged or incorrect, contact us within 48 hours of delivery and include photographs where possible.'] },
+      { title: 'How do I know which products are right for my skin?', paragraphs: ['Each product page includes information about ingredients, skin types and recommended usage. If you’re unsure, contact us and we’ll be happy to help.'] },
+      { title: 'Are Korean skincare products suitable for sensitive skin?', paragraphs: ['Many Korean skincare products are formulated with gentle ingredients. However, we recommend patch testing before use.'] },
+      { title: 'How can I track my order?', paragraphs: ['Tracking information will be provided once your order has been dispatched.'] },
+      { title: 'How can I contact you?', paragraphs: ['Email us at support@skinofkorea.co.uk and we’ll get back to you as soon as possible.'] },
+    ],
+  },
+  '/pages/contact-us': {
+    title: 'Contact Us',
+    sections: [
+      { title: 'We’d Love To Hear From You', paragraphs: ['Whether you have a question about a product, an order, delivery, returns, or simply need help choosing the right skincare products, our team is here to help.', 'Email hello@skinofkorea.co.uk. We aim to respond to all enquiries within 1–2 business days.'] },
+      { title: 'Delivery & Orders', paragraphs: ['For an existing order enquiry, include your order number, the full name used when placing the order, and a brief description of your enquiry.'] },
+      { title: 'Product Questions', paragraphs: ['We’re happy to help with general product enquiries and can guide you towards suitable cleansers, toners, serums, moisturisers, sunscreens and face masks available on our store.'] },
+      { title: 'Business Enquiries', paragraphs: ['For partnership, wholesale or business enquiries, contact hello@skinofkorea.co.uk and include “Business Enquiry” in the subject line.'] },
+    ],
+  },
+  '/pages/about-us': {
+    title: 'About Us',
+    sections: [
+      { title: 'Bringing Authentic Korean Skincare to the UK', paragraphs: ['At MIIKOREAN, our mission is simple: to make authentic Korean skincare accessible throughout the UK.', 'We created MIIKOREAN to help UK customers discover trusted Korean skincare brands without the confusion of overseas ordering, long delivery times or concerns about product authenticity.'] },
+      { title: 'Why Korean Skincare?', paragraphs: ['Korean skincare focuses on long-term skin health rather than quick fixes. Products feature ingredients such as hyaluronic acid, centella asiatica, rice extract, snail mucin, green tea, niacinamide and ceramides.'] },
+      { title: 'Our Commitment to Authenticity', paragraphs: ['We carefully source products from trusted suppliers and distributors to ensure customers receive genuine Korean skincare products from brands they know and love.'] },
+      { title: 'Curated Products We Believe In', paragraphs: ['We focus on carefully selected cleansers, toners, serums, moisturisers, sunscreens and face masks chosen for quality, effectiveness and customer satisfaction.'] },
+      { title: 'Delivered Across the UK', paragraphs: ['MIIKOREAN aims to provide secure online shopping, reliable UK delivery, responsive customer support and a carefully curated collection of Korean skincare products.'] },
+    ],
+  },
+};
 
-function StoreFooter() {
-  return (
-    <footer className="site-footer bg-brand-deepNight text-stone-300 py-16 px-6 sm:px-12 border-t border-stone-900 mt-16">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-14">
-        <div><a className="font-serif-luxury text-2xl tracking-[0.25em] font-medium text-white uppercase block mb-4" href="/">MIIKOREAN</a><p className="text-xs text-stone-400 font-light leading-relaxed max-w-xs">Korean skincare, checked ingredient by ingredient and shipped from the UK.</p></div>
-        <FooterColumn title="Shop" links={navigation.slice(0, 4)} />
-        <FooterColumn title="Help" links={[["Track an order", "/account"], ["Returns", "/account"], ["Sign in", "/login"]]} />
-        <FooterColumn title="MiiKorean" links={[["Routine builder", "/routine"], ["Ingredient glossary", "/ingredients"], ["Points & rewards", "/account/points"], ["Subscriptions", "/account/subscriptions"]]} />
-      </div>
-      <div className="max-w-7xl mx-auto pt-8 border-t border-stone-800/80 text-[11px] text-stone-500 font-light">© 2026. All rights reserved.</div>
-    </footer>
-  );
-}
-
-function FooterColumn({ title, links }) {
-  return <div><h2 className="text-xs font-semibold uppercase tracking-widest text-white mb-4">{title}</h2><ul className="space-y-2.5 text-xs text-stone-400 font-light">{links.map(([label, href]) => <li key={label}><a className="hover:text-white" href={href}>{label}</a></li>)}</ul></div>;
-}
-
-const filterGroups = [
-  ['Skin type', ['Dry', 'Combination', 'Sensitive']],
-  ['Concern', ['Acne', 'Pores']],
-  ['Formulation', ['Cruelty-free']],
-  ['Price', ['All', '£10 – £19.99']],
-  ['Brand', ['COSRX']],
-];
-
-function FilterPanel({ activeFilters, onToggle, onClear, sidebar = false }) {
-  return (
-    <div className={`${sidebar ? 'bg-white px-1 py-0' : 'border-b border-stone-200 bg-[#FCFAF7] px-5 py-6 mb-8'}`} aria-label="Filters">
-      {sidebar && <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-900 mb-5">Filters</h2>}
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xs font-semibold uppercase tracking-widest text-stone-900">Filter</h2>
-        <button className="text-[10px] uppercase tracking-widest underline underline-offset-4 text-stone-600 hover:text-stone-950" onClick={onClear}>Clear all</button>
-      </div>
-      <div className={`grid grid-cols-1 ${sidebar ? 'gap-6' : 'sm:grid-cols-2 lg:grid-cols-5 gap-6'}`}>
-        {filterGroups.map(([group, options]) => <fieldset key={group}><legend className="text-xs font-semibold text-stone-900 mb-3">{group}</legend><div className="space-y-2">{options.map((option) => { const filterId = `${group}:${option}`; return <label key={option} className="flex items-center gap-2 text-xs text-stone-600 cursor-pointer"><input type="checkbox" checked={activeFilters.includes(filterId)} onChange={() => onToggle(filterId)} className="h-3.5 w-3.5 rounded-none border-stone-400 text-stone-900 focus:ring-stone-700" /><span>{option}</span><span className="text-stone-400">1</span></label>; })}</div></fieldset>)}
-      </div>
-    </div>
-  );
-}
-
-function CategoryPage({ category, cartCount, onAddToBag }) {
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const [activeFilters, setActiveFilters] = useState([]);
-  const currentPath = Object.keys(categories).find((key) => categories[key] === category);
-  const related = navigation.filter(([, href]) => href !== currentPath);
-  const product = category ? [category, ...(category.label === 'Masks' ? [category] : [])] : [];
-  const toggleFilter = (filterId) => setActiveFilters((filters) => filters.includes(filterId) ? filters.filter((item) => item !== filterId) : [...filters, filterId]);
-
+function InformationPage({ page, cartCount }) {
   return (
     <>
       <StoreHeader cartCount={cartCount} />
-      <main id="main" className="max-w-7xl mx-auto px-4 sm:px-6 py-8">
-        <nav className="text-xs text-stone-500 mb-10" aria-label="Breadcrumb"><a href="/">Home</a><span className="mx-2">/</span><span>{category.label}</span></nav>
-        <div className="text-center mb-10">
-          <h1 className="font-serif-luxury text-4xl sm:text-5xl uppercase tracking-[0.12em] font-normal text-stone-900 mb-4">{category.label}</h1>
-          <p className="text-sm text-stone-600 font-light leading-relaxed max-w-2xl mx-auto">Every result on this page is in stock and checked for UK cosmetics compliance. Filter by skin type, concern or formulation to narrow it down.</p>
-          <a className="inline-block mt-5 text-xs tracking-wide text-stone-900 hover:underline underline-offset-4" href="/routine"><span className="mr-2 text-stone-500">♧</span><strong>Not sure which one?</strong><span className="ml-2">Take the 2-minute routine quiz</span></a>
-        </div>
-        <nav className="flex justify-center gap-2 overflow-x-auto border-y border-stone-200 py-4 mb-8 text-[11px] uppercase tracking-wider whitespace-nowrap" aria-label="Other categories">{related.map(([label, href]) => <a key={href} className="border border-stone-400 px-5 py-2 hover:border-stone-900 hover:text-stone-950" href={href}>{label}</a>)}</nav>
-        <div className="grid grid-cols-1 lg:grid-cols-[236px_minmax(0,1fr)] gap-8">
-          <aside className="hidden lg:block"><FilterPanel sidebar activeFilters={activeFilters} onToggle={toggleFilter} onClear={() => setActiveFilters([])} /></aside>
-          <section>
-            <div className="flex items-center justify-between border-b border-stone-200 pb-4 mb-0 text-xs"><button className="lg:hidden border border-stone-800 px-5 py-2 uppercase tracking-widest hover:bg-stone-900 hover:text-white" onClick={() => setFiltersOpen((open) => !open)} aria-expanded={filtersOpen}>Filters{activeFilters.length ? ` (${activeFilters.length})` : ''}</button><p><strong>{product.length}</strong> {product.length === 1 ? 'product' : 'products'}</p><label className="flex items-center gap-2">Sort by<select className="border border-stone-300 bg-white px-3 py-2"><option>Best match</option><option>Price: low to high</option><option>Price: high to low</option><option>Top rated</option></select></label></div>
-            {filtersOpen && <div className="lg:hidden mt-6"><FilterPanel activeFilters={activeFilters} onToggle={toggleFilter} onClear={() => setActiveFilters([])} /></div>}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-6" aria-label={`${category.label} products`}>
-          {product.map((item, index) => <li key={`${item.product}-${index}`}><article className="flex flex-col bg-white border border-stone-100 p-3 h-full"><div className="relative aspect-square bg-[#F8F5F2] overflow-hidden mb-3"><img alt={item.product} className="w-full h-full object-cover" src={item.image} /><button aria-label={`Add ${item.product} to wishlist`} className="absolute top-2 right-2 text-stone-500 text-xl">♡</button></div><p className="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">{item.eyebrow}</p><h2 className="text-sm font-semibold text-stone-900 leading-snug mb-2"><a href="#">{item.product}</a></h2><p className="text-xs text-stone-500 mb-4">{item.description}</p><p className="text-sm font-semibold text-stone-900 mb-3 mt-auto">{item.price}</p><button onClick={() => onAddToBag(item.product)} className="w-full border border-stone-800 text-[10px] tracking-widest uppercase font-semibold py-2 hover:bg-stone-900 hover:text-white transition">Add to bag</button></article></li>)}
-        </ul>
-          </section>
+      <main id="main" className="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+        <h1 className="font-serif-luxury text-4xl sm:text-5xl uppercase tracking-[0.12em] text-stone-900 mb-10">{page.title}</h1>
+        <div className="space-y-9">
+          {page.sections.map((section) => <section key={section.title} className="border-t border-stone-200 pt-5"><h2 className="text-sm font-semibold text-stone-900 mb-3">{section.title}</h2>{section.paragraphs.map((paragraph) => <p key={paragraph} className="text-sm text-stone-600 leading-relaxed mb-3">{paragraph}</p>)}{section.bullets && <ul className="list-disc pl-5 space-y-1 text-sm text-stone-600">{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}</section>)}
         </div>
       </main>
       <StoreFooter />
@@ -124,89 +80,163 @@ function CategoryPage({ category, cartCount, onAddToBag }) {
   );
 }
 
-function IngredientPage({ cartCount }) {
-  return <><StoreHeader cartCount={cartCount} /><main id="main" className="max-w-7xl mx-auto px-4 sm:px-6 py-8"><nav className="text-xs text-stone-500 mb-10"><a href="/">Home</a><span className="mx-2">/</span>Ingredient glossary</nav><section className="bg-[#F6EEE5] px-8 py-16 mb-12"><p className="text-[11px] tracking-[0.2em] uppercase text-stone-500 mb-3">Ingredient glossary</p><h1 className="font-serif-luxury text-4xl sm:text-6xl uppercase tracking-[0.12em] text-stone-900 max-w-3xl">Know what’s in it before it’s on your face.</h1><p className="text-sm text-stone-600 font-light leading-relaxed max-w-2xl mt-5">Every product lists its full INCI, key ingredients and known conflicts. Browse by name to see what an ingredient does, which of our products contain it, and what to avoid layering it with.</p></section><div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">{['Centella asiatica', 'Niacinamide', 'Snail mucin', 'Hyaluronic acid', 'Vitamin C', 'AHA / BHA'].map((ingredient) => <a key={ingredient} href="#" className="border border-stone-200 p-6 text-sm uppercase tracking-widest hover:bg-stone-900 hover:text-white">{ingredient}</a>)}</div></main><StoreFooter /></>;
-}
+function CookieConsent({ initialPreferences, onSave }) {
+  const [customizing, setCustomizing] = useState(false);
+  const [preferences, setPreferences] = useState(initialPreferences ?? defaultCookiePreferences);
 
-function CookieConsent({ onClose }) {
+  const updatePreference = (name, enabled) => {
+    setPreferences((current) => ({ ...current, [name]: enabled }));
+  };
+
   return (
     <div
       aria-labelledby="cookieTitle"
-      aria-modal="true"
       className="cookie-consent fixed bottom-6 right-6 z-50 max-w-sm w-full bg-white shadow-2xl border border-stone-200 p-5 rounded-sm"
       role="dialog"
     >
       <div className="flex items-start justify-between mb-2">
         <h3 className="text-xs font-semibold uppercase tracking-widest text-stone-900" id="cookieTitle">
-          Cookie Consent
+          {customizing ? 'Cookie Preferences' : 'Cookie Consent'}
         </h3>
-        <button aria-label="Close cookie banner" className="text-stone-400 hover:text-stone-700" onClick={onClose}>
+        <button aria-label="Reject optional cookies and close" className="text-stone-400 hover:text-stone-700" onClick={() => onSave(defaultCookiePreferences)}>
           <span aria-hidden="true" className="text-lg leading-none">&times;</span>
         </button>
       </div>
-      <p className="text-[11px] text-stone-600 leading-relaxed mb-4">
-        We use cookies to personalise your experience, deliver analytics, and for marketing purposes. You can customise your preferences below.
-      </p>
-      <p className="text-[11px] text-stone-800 font-medium mb-3">
-        You can accept all, reject all, or customise which <span className="underline">cookies you&apos;d like to</span> allow.
-      </p>
-      <div className="flex items-center gap-2 mb-2">
-        <button className="flex-1 border border-stone-900 text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-100 transition" onClick={onClose}>
-          Reject All
-        </button>
-        <button className="flex-1 border border-stone-300 text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-100 transition" onClick={onClose}>
-          Customise
-        </button>
-      </div>
-      <button className="w-full bg-stone-950 text-white text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-800 transition" onClick={onClose}>
-        Accept All
-      </button>
+      {customizing ? (
+        <>
+          <p className="text-[11px] text-stone-600 leading-relaxed mb-4">Necessary cookies keep the store working. Choose whether to allow optional analytics and marketing cookies.</p>
+          <fieldset className="space-y-3 mb-5">
+            <legend className="sr-only">Cookie categories</legend>
+            <label className="flex items-start gap-3 text-xs text-stone-800"><input checked disabled type="checkbox" className="mt-0.5 h-4 w-4 accent-stone-900" /><span><strong className="block">Necessary</strong><span className="text-[11px] text-stone-500">Required for core store features.</span></span></label>
+            <label className="flex items-start gap-3 text-xs text-stone-800"><input checked={preferences.analytics} onChange={(event) => updatePreference('analytics', event.target.checked)} type="checkbox" className="mt-0.5 h-4 w-4 accent-stone-900" /><span><strong className="block">Analytics</strong><span className="text-[11px] text-stone-500">Helps us understand how the store is used.</span></span></label>
+            <label className="flex items-start gap-3 text-xs text-stone-800"><input checked={preferences.marketing} onChange={(event) => updatePreference('marketing', event.target.checked)} type="checkbox" className="mt-0.5 h-4 w-4 accent-stone-900" /><span><strong className="block">Marketing</strong><span className="text-[11px] text-stone-500">Allows relevant promotions and advertising.</span></span></label>
+          </fieldset>
+          <div className="flex items-center gap-2">
+            <button className="flex-1 border border-stone-300 text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-100 transition" onClick={() => setCustomizing(false)}>Back</button>
+            <button className="flex-1 bg-stone-950 text-white text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-800 transition" onClick={() => onSave(preferences)}>Save choices</button>
+          </div>
+        </>
+      ) : (
+        <>
+          <p className="text-[11px] text-stone-600 leading-relaxed mb-4">Necessary cookies keep the store working. You can choose whether to allow optional analytics and marketing cookies.</p>
+          <div className="flex items-center gap-2 mb-2">
+            <button className="flex-1 border border-stone-900 text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-100 transition" onClick={() => onSave(defaultCookiePreferences)}>Reject All</button>
+            <button className="flex-1 border border-stone-300 text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-100 transition" onClick={() => setCustomizing(true)}>Customise</button>
+          </div>
+          <button className="w-full bg-stone-950 text-white text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-800 transition" onClick={() => onSave({ necessary: true, analytics: true, marketing: true })}>Accept All</button>
+        </>
+      )}
     </div>
   );
 }
 
-function MobileNav({ showAccount }) {
-  return <nav className="mobile-bottom-nav" aria-label="Mobile navigation"><a href="/">⌂<span>Home</span></a><a href="#">⌕<span>Search</span></a><a href="/routine">♧<span>Routine</span></a><a href="#">♡<span>Wishlist</span></a>{showAccount && <a href="/login">◯<span>Account</span></a>}</nav>;
-}
-
 export default function App() {
-  const [showCookieConsent, setShowCookieConsent] = useState(true);
-  const [cartCount, setCartCount] = useState(() => Number(localStorage.getItem('miikorean-cart-count') || 0));
+  const [cookiePreferences, setCookiePreferences] = useState(readCookiePreferences);
+  const [showCookieConsent, setShowCookieConsent] = useState(() => cookiePreferences === null);
+  const [cartItems, setCartItems] = useState(readCartItems);
+  const [wishlistHandles, setWishlistHandles] = useState(readWishlistHandles);
   const [cartMessage, setCartMessage] = useState('');
   const currentPath = window.location.pathname;
+  const searchQuery = new URLSearchParams(window.location.search).get('q') ?? '';
   const category = categories[currentPath];
+  const informationPage = informationPages[currentPath];
+  const productHandle = currentPath.match(/^\/products\/([^/]+)$/)?.[1];
+  const commerceProduct = productHandle ? commerceProductByHandle[productHandle] : null;
+  const cartCount = cartItems.reduce((count, item) => count + item.quantity, 0);
 
-  const handleAddToBag = (product) => {
-    setCartCount((count) => count + 1);
-    setCartMessage(`${product} added to your bag`);
+  const handleAddToBag = (product, options = {}) => {
+    if (!product) return;
+    if (product.available === false) {
+      setCartMessage(`${product.title} is sold out`);
+      window.setTimeout(() => setCartMessage(''), 2400);
+      return;
+    }
+    const line = createCartLine(product, options);
+    setCartItems((current) => {
+      const existing = current.find((item) => item.key === line.key);
+      return existing
+        ? current.map((item) => item.key === line.key ? { ...item, quantity: item.quantity + line.quantity } : item)
+        : [...current, line];
+    });
+    setCartMessage(`${product.title} added to your bag`);
     window.setTimeout(() => setCartMessage(''), 2400);
   };
 
+  const removeCartItem = (key) => setCartItems((items) => items.filter((item) => item.key !== key));
+
+  const toggleWishlist = (handle) => {
+    const wasSaved = wishlistHandles.includes(handle);
+    setWishlistHandles((handles) => handles.includes(handle) ? handles.filter((item) => item !== handle) : [...handles, handle]);
+    const product = commerceProductByHandle[handle];
+    setCartMessage(`${product?.title ?? 'Product'} ${wasSaved ? 'removed from' : 'added to'} your wishlist`);
+    window.setTimeout(() => setCartMessage(''), 2400);
+  };
+
+  const updateCartItem = (key, action) => {
+    setCartItems((items) => items.flatMap((item) => {
+      if (item.key !== key) return [item];
+      if (action === 'increase') return [{ ...item, quantity: item.quantity + 1 }];
+      if (action === 'decrease') return item.quantity > 1 ? [{ ...item, quantity: item.quantity - 1 }] : [];
+      const purchaseType = action === 'one-time' ? 'one-time' : 'subscription';
+      const frequency = purchaseType === 'subscription' ? Number(action.split('-')[1]) : null;
+      const unitPrice = purchaseType === 'subscription' ? item.basePrice * 0.9 : item.basePrice;
+      return [{ ...item, key: `${item.handle}:${purchaseType}:${frequency ?? 'once'}`, purchaseType, frequency, unitPrice }];
+    }));
+  };
+
+  const saveCookiePreferences = (preferences) => {
+    try {
+      window.localStorage.setItem(cookieConsentStorageKey, JSON.stringify(preferences));
+    } catch {}
+    setCookiePreferences(preferences);
+    setShowCookieConsent(false);
+  };
+
   useEffect(() => {
+    localStorage.setItem('miikorean-cart', JSON.stringify(cartItems));
     localStorage.setItem('miikorean-cart-count', String(cartCount));
     const bag = document.querySelector('[aria-label="Shopping bag"] span');
     if (bag) {
       bag.textContent = cartCount ? `Bag (${cartCount})` : 'Bag';
     }
-  }, [cartCount]);
+  }, [cartItems, cartCount]);
 
   useEffect(() => {
-    const addToBagButtons = [...document.querySelectorAll('button')].filter(
-      (button) => button.textContent.trim().toLowerCase() === 'add to bag',
-    );
+    localStorage.setItem('miikorean-wishlist', JSON.stringify(wishlistHandles));
+    document.querySelectorAll('[data-wishlist-handle]').forEach((button) => {
+      const isSaved = wishlistHandles.includes(button.dataset.wishlistHandle);
+      button.classList.toggle('is-saved', isSaved);
+      button.setAttribute('aria-pressed', String(isSaved));
+      button.setAttribute('aria-label', `${isSaved ? 'Remove' : 'Add'} product to wishlist`);
+    });
+  }, [wishlistHandles]);
 
-    const handleAddToBag = (event) => {
-      const product = event.currentTarget.closest('article')?.querySelector('h3')?.textContent.trim();
-      handleAddToBag(product || 'Item');
+  useEffect(() => {
+    const handleStaticProductAction = (event) => {
+      const addButton = event.target.closest('[data-add-to-bag]');
+      if (addButton && !addButton.disabled) {
+        const product = commerceProductByHandle[addButton.dataset.addToBag];
+        if (product) handleAddToBag(product, { quantity: 1, purchaseType: 'one-time', frequency: 30 });
+        return;
+      }
+      const wishlistButton = event.target.closest('[data-wishlist-handle]');
+      if (wishlistButton) {
+        toggleWishlist(wishlistButton.dataset.wishlistHandle);
+        const isSaved = !wishlistHandles.includes(wishlistButton.dataset.wishlistHandle);
+        wishlistButton.setAttribute('aria-pressed', String(isSaved));
+        wishlistButton.setAttribute('aria-label', `${isSaved ? 'Remove' : 'Add'} product to wishlist`);
+      }
     };
-
-    addToBagButtons.forEach((button) => button.addEventListener('click', handleAddToBag));
-    return () => addToBagButtons.forEach((button) => button.removeEventListener('click', handleAddToBag));
-  }, []);
+    document.addEventListener('click', handleStaticProductAction);
+    return () => document.removeEventListener('click', handleStaticProductAction);
+  }, [handleAddToBag, toggleWishlist, wishlistHandles]);
 
   useEffect(() => {
     const revealItems = [...document.querySelectorAll('section, article, .brand-tile, .review-item, main > div')];
-    revealItems.forEach((item) => item.classList.add('scroll-reveal'));
+    revealItems.forEach((item) => {
+      item.classList.add('scroll-reveal');
+      item.classList.remove('is-visible');
+    });
 
     if (!('IntersectionObserver' in window)) {
       revealItems.forEach((item) => item.classList.add('is-visible'));
@@ -215,29 +245,19 @@ export default function App() {
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
-        }
+        entry.target.classList.toggle('is-visible', entry.isIntersecting);
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
 
-    revealItems.forEach((item) => {
-      const bounds = item.getBoundingClientRect();
-      if (bounds.top < window.innerHeight && bounds.bottom > 0) {
-        item.classList.add('is-visible');
-      } else {
-        observer.observe(item);
-      }
-    });
+    revealItems.forEach((item) => observer.observe(item));
     return () => observer.disconnect();
   }, [currentPath]);
 
   return (
     <>
-      {category ? <CategoryPage category={category} cartCount={cartCount} onAddToBag={handleAddToBag} /> : currentPath === '/ingredients' ? <IngredientPage cartCount={cartCount} /> : <><AnnouncementBar /><div dangerouslySetInnerHTML={{ __html: pageMarkup }} /></>}
-      {showCookieConsent && <CookieConsent onClose={() => setShowCookieConsent(false)} />}
-      <MobileNav showAccount={Boolean(category || currentPath === '/ingredients')} />
+      {category ? <CategoryPage category={category} cartCount={cartCount} onAddToBag={handleAddToBag} /> : commerceProduct ? <ProductPage cartCount={cartCount} onAddToBag={handleAddToBag} onToggleWishlist={toggleWishlist} product={commerceProduct} saved={wishlistHandles.includes(commerceProduct.handle)} /> : currentPath === '/cart' ? <CartPage cartCount={cartCount} cartItems={cartItems} onAddToBag={handleAddToBag} onRemove={removeCartItem} onUpdateCartItem={updateCartItem} /> : currentPath === '/checkout' ? <CheckoutPage cartCount={cartCount} cartItems={cartItems} /> : currentPath === '/account/wishlist' ? <WishlistPage cartCount={cartCount} handles={wishlistHandles} onAddToBag={handleAddToBag} onToggleWishlist={toggleWishlist} /> : currentPath === '/search' ? <SearchPage cartCount={cartCount} onAddToBag={handleAddToBag} query={searchQuery} /> : informationPage ? <InformationPage page={informationPage} cartCount={cartCount} /> : currentPath === '/ingredients' ? <IngredientPage cartCount={cartCount} /> : <><AnnouncementBar /><div dangerouslySetInnerHTML={{ __html: homepageMarkup }} /></>}
+      {showCookieConsent && <CookieConsent initialPreferences={cookiePreferences} onSave={saveCookiePreferences} />}
+      <MobileNav showAccount={Boolean(category || informationPage || currentPath === '/ingredients')} />
       {cartMessage && (
         <div className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 bg-stone-950 text-white px-5 py-3 text-xs shadow-xl" role="status">
           {cartMessage}
