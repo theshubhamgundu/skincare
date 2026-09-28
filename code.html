@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MiiKorean | Curated Korean Skincare UK</title>
+<!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container queries plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              burgundy: '#3B0A1A',
+              darkBurgundy: '#2B0612',
+              deepNight: '#17060E',
+              cream: '#FBF8F4',
+              softSand: '#F5ECE3',
+              sandCard: '#F3E9DF',
+              roseStamp: '#ECC8C5',
+              badgeGreen: '#006241',
+              badgeDark: '#3A141C',
+              goldBorder: '#D8C5B3',
+            }
+          },
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            widestPlus: '0.22em',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-typography">
+    .font-serif-luxury {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-feature-settings: "liga" 1, "kern" 1;
+    }
+    .custom-scroll-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .custom-scroll-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#FCFAF7] text-stone-800 font-sans antialiased selection:bg-brand-burgundy selection:text-white">
+<!-- BEGIN: MainHeader -->
+<header class="bg-white border-b border-stone-100 sticky top-0 z-40 transition-shadow">
+<div class="max-w-7xl mx-auto px-4 sm:px-8 py-4 flex items-center justify-between gap-6">
+<!-- Search Input Left -->
+<div class="w-1/3 max-w-xs relative hidden sm:block">
+<div class="relative flex items-center">
+<input class="w-full text-xs placeholder:text-stone-400 bg-transparent border-b border-stone-300 py-1.5 pr-8 pl-0 text-stone-800 focus:outline-none focus:border-stone-900 focus:ring-0 transition-colors" placeholder="Search products, ingredients and concerns" type="text"/>
+<button aria-label="Submit search" class="absolute right-0 text-stone-400 hover:text-stone-700 transition-colors">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Center Logo -->
+<div class="flex-1 text-center sm:text-center">
+<a class="inline-block" href="#">
+<span class="font-serif-luxury text-2xl sm:text-3xl tracking-[0.25em] font-medium text-stone-900 uppercase">
+            MIIKOREAN
+          </span>
+</a>
+</div>
+<!-- Right Utility Actions -->
+<div class="w-1/3 flex items-center justify-end gap-3 sm:gap-6 text-xs font-normal">
+<a aria-label="Wishlist" class="text-stone-700 hover:text-black transition-colors" href="#">
+<svg class="w-4 h-4 stroke-[1.7]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</a>
+<a aria-label="Shopping bag" class="flex items-center gap-1.5 text-stone-700 hover:text-black transition-colors" href="#">
+<svg class="w-4 h-4 stroke-[1.7]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="hidden md:inline text-xs">Bag</span>
+</a>
+</div>
+</div>
+</header>
+<!-- END: MainHeader -->
+<!-- BEGIN: HeroSlider -->
+<section class="relative bg-[#F7EFE8] overflow-hidden" data-purpose="hero-carousel">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center min-h-[440px] md:min-h-[480px]">
+<!-- Left Content -->
+<div class="px-8 sm:px-14 lg:px-20 py-12 md:py-16 z-10">
+<p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-stone-500 mb-3">
+          Cult-Favourite K-Beauty
+        </p>
+<h1 class="font-serif-luxury text-3xl sm:text-4xl lg:text-5xl font-medium tracking-tight text-stone-900 leading-[1.15] mb-4">
+          THE BESTSELLERS EDIT
+        </h1>
+<p class="text-stone-600 text-xs sm:text-sm font-light leading-relaxed max-w-sm mb-7">
+          The toners, serums and creams everyone is reordering. Free UK delivery on orders over £40.
+        </p>
+<div>
+<a class="inline-block border border-stone-900 px-7 py-2.5 text-xs font-medium tracking-widest uppercase hover:bg-stone-900 hover:text-white transition-all duration-200" href="#">
+            Shop Now
+          </a>
+</div>
+</div>
+<!-- Right Image Banner -->
+<div class="h-full w-full min-h-[300px] md:min-h-[480px] relative overflow-hidden bg-cover bg-center flex items-center justify-center" style="background-image: url('https://korean-uk.up.railway.app/images/home/hero-banner.jpg');">
+<!-- Overlay subtle warmth -->
+<div class="absolute inset-0 bg-stone-900/10 mix-blend-multiply"></div>
+</div>
+</div>
+<!-- Carousel Arrow Controls -->
+<button aria-label="Previous slide" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-stone-700 flex items-center justify-center shadow-sm transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+<button aria-label="Next slide" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 hover:bg-white text-stone-700 flex items-center justify-center shadow-sm transition">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</section>
+<!-- END: HeroSlider -->
+<!-- BEGIN: TrustMarquee -->
+<section class="trust-marquee" aria-label="MiiKorean benefits">
+<div class="trust-marquee-track">
+<div class="trust-marquee-set">
+<span>Fast Delivery Nationwide</span><i></i><span>Secure Checkout</span><i></i><span>Curated Selection</span><i></i><span>Trusted Korean Brands</span><i></i><span>Excellent Customer Service</span><i></i><span>100% Authentic Korean Skincare</span><i></i><span>UK Based Store</span><i></i>
+</div>
+<div class="trust-marquee-set" aria-hidden="true">
+<span>Fast Delivery Nationwide</span><i></i><span>Secure Checkout</span><i></i><span>Curated Selection</span><i></i><span>Trusted Korean Brands</span><i></i><span>Excellent Customer Service</span><i></i><span>100% Authentic Korean Skincare</span><i></i><span>UK Based Store</span><i></i>
+</div>
+</div>
+</section>
+<!-- END: TrustMarquee -->
+<!-- BEGIN: ShopByCategory -->
+<section class="py-10 sm:py-14 px-4 max-w-7xl mx-auto">
+<div class="flex items-end justify-between mb-6">
+<h2 class="font-serif-luxury text-2xl sm:text-3xl tracking-[0.14em] font-normal uppercase text-stone-900">
+        Shop by Category
+      </h2>
+<a class="hidden sm:inline text-[10px] tracking-widest uppercase text-stone-500 hover:text-stone-900" href="/cleanse">View all</a>
+</div>
+<div class="category-scroll custom-scroll-hide">
+<a class="category-tile" href="/cleanse"><img alt="Cleansers" src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&amp;w=400&amp;h=500&amp;fit=crop"/><span>Cleansers</span></a>
+<a class="category-tile" href="/tone"><img alt="Toners and mists" src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&amp;w=400&amp;h=500&amp;fit=crop"/><span>Toners &amp; Mists</span></a>
+<a class="category-tile" href="/essence"><img alt="Essences" src="https://images.unsplash.com/photo-1617897903246-719242758050?q=80&amp;w=400&amp;h=500&amp;fit=crop"/><span>Essences</span></a>
+<a class="category-tile" href="/serum"><img alt="Serums" src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&amp;w=400&amp;h=500&amp;fit=crop"/><span>Serums</span></a>
+<a class="category-tile" href="/mask"><img alt="Masks" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&amp;w=400&amp;h=500&amp;fit=crop"/><span>Masks</span></a>
+<a class="category-tile" href="/moisturise"><img alt="Moisturisers" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&amp;w=400&amp;h=500&amp;fit=crop"/><span>Moisturisers</span></a>
+<a class="category-tile" href="/spf"><img alt="Sun care" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&amp;w=400&amp;h=500&amp;fit=crop"/><span>Sun Care</span></a>
+</div>
+</section>
+<!-- END: ShopByCategory -->
+<!-- BEGIN: ProductGridSection -->
+<section class="py-8 px-4 sm:px-6 max-w-7xl mx-auto">
+<div class="text-center mb-6">
+<h2 class="font-serif-luxury text-2xl tracking-[0.18em] font-normal uppercase text-stone-900 mb-4">
+        The Ones You'll Love
+      </h2>
+<div class="inline-flex items-center gap-8 text-xs tracking-widest uppercase font-semibold">
+<button class="text-stone-900 border-b-2 border-stone-900 pb-1">New In</button>
+<button class="text-stone-400 hover:text-stone-700 pb-1 transition-colors">Bestsellers</button>
+</div>
+</div>
+<!-- 5 Product Cards Responsive Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5 pt-6">
+<!-- Card 1 -->
+<article class="flex flex-col bg-white border border-stone-100 p-3 group relative transition hover:shadow-sm">
+<div class="relative w-full aspect-square bg-[#F8F5F2] overflow-hidden mb-3">
+<img alt="Aloe Soothing Sun Cream SPF50+ PA+++" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&amp;w=400&amp;h=500&amp;fit=crop"/>
+<button aria-label="Add to wishlist" class="absolute top-2 right-2 text-stone-400 hover:text-stone-800 transition">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<p class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">COSRX · SPF</p>
+<h3 class="text-xs font-semibold text-stone-900 leading-snug line-clamp-2 min-h-[32px] mb-1">
+          Aloe Soothing Sun Cream SPF50+ PA+++
+        </h3>
+<p class="text-[11px] text-stone-500 mb-3">Soothing daily sun protection</p>
+<div class="flex items-center gap-1.5 mb-2 mt-auto">
+<span class="bg-[#3D0C1A] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">NEW</span>
+<span class="bg-[#025943] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">CRUELTY-FREE</span>
+</div>
+<p class="text-xs font-semibold text-stone-900 mb-3">£14.50</p>
+<button class="w-full border border-stone-800 text-[10px] tracking-widest uppercase font-semibold py-2 hover:bg-stone-900 hover:text-white transition">
+          Add To Bag
+        </button>
+</article>
+<!-- Card 2 -->
+<article class="flex flex-col bg-white border border-stone-100 p-3 group relative transition hover:shadow-sm">
+<div class="relative w-full aspect-square bg-[#F8F5F2] overflow-hidden mb-3">
+<img alt="Oil-Free Ultra-Moisturizing Lotion" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&amp;w=400&amp;h=500&amp;fit=crop"/>
+<button aria-label="Add to wishlist" class="absolute top-2 right-2 text-stone-400 hover:text-stone-800 transition">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<p class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">COSRX · MOISTURISE</p>
+<h3 class="text-xs font-semibold text-stone-900 leading-snug line-clamp-2 min-h-[32px] mb-1">
+          Oil-Free Ultra-Moisturizing Lotion
+        </h3>
+<p class="text-[11px] text-stone-500 mb-3">Daily moisturizer with birch sap</p>
+<div class="flex items-center gap-1.5 mb-2 mt-auto">
+<span class="bg-[#3D0C1A] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">NEW</span>
+<span class="bg-[#025943] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">CRUELTY-FREE</span>
+</div>
+<p class="text-xs font-semibold text-stone-900 mb-3">£19.50</p>
+<button class="w-full border border-stone-800 text-[10px] tracking-widest uppercase font-semibold py-2 hover:bg-stone-900 hover:text-white transition">
+          Add To Bag
+        </button>
+</article>
+<!-- Card 3 -->
+<article class="flex flex-col bg-white border border-stone-100 p-3 group relative transition hover:shadow-sm">
+<div class="relative w-full aspect-square bg-[#F8F5F2] overflow-hidden mb-3">
+<img alt="Advanced Snail Peptide Eye Cream" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&amp;w=400&amp;h=500&amp;fit=crop"/>
+<button aria-label="Add to wishlist" class="absolute top-2 right-2 text-stone-400 hover:text-stone-800 transition">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<p class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">COSRX · EYE</p>
+<h3 class="text-xs font-semibold text-stone-900 leading-snug line-clamp-2 min-h-[32px] mb-1">
+          Advanced Snail Peptide Eye Cream
+        </h3>
+<p class="text-[11px] text-stone-500 mb-3">Nourishing and brightening eye cream</p>
+<div class="flex items-center gap-1.5 mb-2 mt-auto">
+<span class="bg-[#3D0C1A] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">NEW</span>
+<span class="bg-[#025943] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">CRUELTY-FREE</span>
+</div>
+<p class="text-xs font-semibold text-stone-900 mb-3">£20.00</p>
+<button class="w-full border border-stone-800 text-[10px] tracking-widest uppercase font-semibold py-2 hover:bg-stone-900 hover:text-white transition">
+          Add To Bag
+        </button>
+</article>
+<!-- Card 4 -->
+<article class="flex flex-col bg-white border border-stone-100 p-3 group relative transition hover:shadow-sm">
+<div class="relative w-full aspect-square bg-[#F8F5F2] overflow-hidden mb-3">
+<img alt="Ultimate Nourishing Rice Overnight Spa Mask" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&amp;w=400&amp;h=500&amp;fit=crop"/>
+<button aria-label="Add to wishlist" class="absolute top-2 right-2 text-stone-400 hover:text-stone-800 transition">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<p class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">COSRX · MASK</p>
+<h3 class="text-xs font-semibold text-stone-900 leading-snug line-clamp-2 min-h-[32px] mb-1">
+          Ultimate Nourishing Rice Overnight Spa Mask
+        </h3>
+<p class="text-[11px] text-stone-500 mb-3">Intensive nourishing and brightening mask</p>
+<div class="flex items-center gap-1.5 mb-2 mt-auto">
+<span class="bg-[#3D0C1A] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">NEW</span>
+<span class="bg-[#025943] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">CRUELTY-FREE</span>
+</div>
+<p class="text-xs font-semibold text-stone-900 mb-3">£18.00</p>
+<button class="w-full border border-stone-800 text-[10px] tracking-widest uppercase font-semibold py-2 hover:bg-stone-900 hover:text-white transition">
+          Add To Bag
+        </button>
+</article>
+<!-- Card 5 -->
+<article class="flex flex-col bg-white border border-stone-100 p-3 group relative transition hover:shadow-sm">
+<div class="relative w-full aspect-square bg-[#F8F5F2] overflow-hidden mb-3">
+<img alt="The Vitamin C 23 Serum" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&amp;w=400&amp;h=500&amp;fit=crop"/>
+<button aria-label="Add to wishlist" class="absolute top-2 right-2 text-stone-400 hover:text-stone-800 transition">
+<svg class="w-4 h-4 stroke-[1.8]" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<p class="text-[10px] uppercase tracking-wider text-stone-500 font-semibold mb-1">COSRX · SERUM</p>
+<h3 class="text-xs font-semibold text-stone-900 leading-snug line-clamp-2 min-h-[32px] mb-1">
+          The Vitamin C 23 Serum
+        </h3>
+<p class="text-[11px] text-stone-500 mb-3">Highly concentrated vitamin c serum</p>
+<div class="flex items-center gap-1.5 mb-2 mt-auto">
+<span class="bg-[#3D0C1A] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">NEW</span>
+<span class="bg-[#025943] text-white text-[9px] uppercase px-1.5 py-0.5 font-bold tracking-wider rounded-none">CRUELTY-FREE</span>
+</div>
+<p class="text-xs font-semibold text-stone-900 mb-3">£22.00</p>
+<button class="w-full border border-stone-800 text-[10px] tracking-widest uppercase font-semibold py-2 hover:bg-stone-900 hover:text-white transition">
+          Add To Bag
+        </button>
+</article>
+</div>
+</section>
+<!-- END: ProductGridSection -->
+<!-- BEGIN: ShopByBrand -->
+<section class="brand-section py-14 text-center max-w-7xl mx-auto px-4">
+<h2 class="font-serif-luxury text-3xl sm:text-4xl tracking-[0.16em] font-normal uppercase text-stone-900 mb-10">
+      Shop by Brand
+    </h2>
+<div class="brand-scroll custom-scroll-hide">
+<a class="brand-tile" href="/brand/beauty-of-joseon"><img alt="Beauty of Joseon" src="/brands/beauty-of-joseon.png"/><span>Beauty of Joseon</span></a>
+<a class="brand-tile" href="/brand/cosrx"><img alt="COSRX" src="/brands/cosrx.png"/><span>COSRX</span></a>
+<a class="brand-tile" href="/brand/anua"><img alt="Anua" src="/brands/anua.png"/><span>Anua</span></a>
+<a class="brand-tile" href="/brand/skin1004"><img alt="SKIN1004" src="/brands/skin1004.png"/><span>SKIN1004</span></a>
+<a class="brand-tile" href="/brand/round-lab"><img alt="Round Lab" src="/brands/round-lab.png"/><span>Round Lab</span></a>
+<a class="brand-tile" href="/brand/isntree"><img alt="Isntree" src="/brands/isntree.png"/><span>Isntree</span></a>
+</div>
+</section>
+<!-- END: ShopByBrand -->
+<!-- BEGIN: CustomerReviews -->
+<section class="reviews-section py-14 px-4 sm:px-6 max-w-7xl mx-auto">
+<div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+<div>
+<p class="text-[10px] tracking-[0.2em] uppercase text-stone-500 mb-2">Real routines, real results</p>
+<h2 class="font-serif-luxury text-3xl sm:text-4xl tracking-[0.12em] uppercase font-normal text-stone-900">Loved by K-beauty shoppers</h2>
+</div>
+<div class="text-left sm:text-right"><div class="text-brand-burgundy text-lg tracking-[0.18em]">★★★★★</div><p class="text-xs text-stone-500 mt-1">4.9 from 1,200+ verified reviews</p></div>
+</div>
+<div class="reviews-grid">
+<blockquote class="review-item"><div class="text-brand-burgundy text-sm tracking-widest mb-4">★★★★★</div><p class="font-serif-luxury text-xl leading-snug text-stone-900">“The only UK skincare shop where I know the products are genuine and the advice makes sense.”</p><footer>— Hannah R. <span>Verified customer</span></footer></blockquote>
+<blockquote class="review-item"><div class="text-brand-burgundy text-sm tracking-widest mb-4">★★★★★</div><p class="font-serif-luxury text-xl leading-snug text-stone-900">“My routine finally feels simple. Everything arrived quickly and beautifully packed.”</p><footer>— Priya S. <span>Verified customer</span></footer></blockquote>
+<blockquote class="review-item"><div class="text-brand-burgundy text-sm tracking-widest mb-4">★★★★★</div><p class="font-serif-luxury text-xl leading-snug text-stone-900">“The ingredient checks gave me confidence to try products I had been nervous about.”</p><footer>— Emma T. <span>Verified customer</span></footer></blockquote>
+</div>
+<div class="text-center mt-8"><a class="inline-block border border-stone-800 px-7 py-2.5 text-[10px] tracking-widest uppercase font-semibold hover:bg-stone-900 hover:text-white transition" href="#">Read all reviews</a></div>
+</section>
+<!-- END: CustomerReviews -->
+<!-- BEGIN: MainFooter -->
+<footer class="site-footer bg-brand-deepNight text-stone-300 py-16 px-6 sm:px-12 border-t border-stone-900">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-14">
+<!-- Brand column -->
+<div>
+<span class="font-serif-luxury text-2xl tracking-[0.25em] font-medium text-white uppercase block mb-4">
+          MIIKOREAN
+        </span>
+<p class="text-xs text-stone-400 font-light leading-relaxed max-w-xs">
+          Korean skincare, checked ingredient by ingredient and shipped from the UK.
+        </p>
+</div>
+<!-- Shop column -->
+<div>
+<h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Shop</h4>
+<ul class="space-y-2.5 text-xs text-stone-400 font-light">
+<li><a class="hover:text-white transition" href="#">Cleansers</a></li>
+<li><a class="hover:text-white transition" href="#">Toners &amp; mists</a></li>
+<li><a class="hover:text-white transition" href="#">Serums</a></li>
+<li><a class="hover:text-white transition" href="#">Sun care</a></li>
+<li><a class="hover:text-white transition" href="#">Search</a></li>
+</ul>
+</div>
+<!-- Help column -->
+<div>
+<h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">Help</h4>
+<ul class="space-y-2.5 text-xs text-stone-400 font-light">
+<li><a class="hover:text-white transition" href="#">Track an order</a></li>
+<li><a class="hover:text-white transition" href="#">Returns</a></li>
+<li><a class="hover:text-white transition" href="#">Sign in</a></li>
+</ul>
+</div>
+<!-- MiiKorean column -->
+<div>
+<h4 class="text-xs font-semibold uppercase tracking-widest text-white mb-4">MiiKorean</h4>
+<ul class="space-y-2.5 text-xs text-stone-400 font-light">
+<li><a class="hover:text-white transition" href="#">Routine builder</a></li>
+<li><a class="hover:text-white transition" href="#">Ingredient glossary</a></li>
+<li><a class="hover:text-white transition" href="#">Points &amp; rewards</a></li>
+<li><a class="hover:text-white transition" href="#">Subscriptions</a></li>
+</ul>
+</div>
+</div>
+<!-- Bottom Copyright -->
+<div class="max-w-7xl mx-auto pt-8 border-t border-stone-800/80 flex flex-col sm:flex-row items-center justify-between text-[11px] text-stone-500 font-light">
+<p>© 2026. All rights reserved.</p>
+</div>
+</footer>
+<!-- END: MainFooter -->
+<!-- BEGIN: CookieConsentModal -->
+<div aria-labelledby="cookieTitle" aria-modal="true" class="fixed bottom-6 right-6 z-50 max-w-sm w-full bg-white shadow-2xl border border-stone-200 p-5 rounded-sm" id="cookieModal" role="dialog">
+<div class="flex items-start justify-between mb-2">
+<h3 class="text-xs font-semibold uppercase tracking-widest text-stone-900" id="cookieTitle">
+        Cookie Consent
+      </h3>
+<button aria-label="Close cookie banner" class="text-stone-400 hover:text-stone-700" onclick="document.getElementById('cookieModal').remove()">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</div>
+<p class="text-[11px] text-stone-600 leading-relaxed mb-4">
+      We use cookies to personalise your experience, deliver analytics, and for marketing purposes. You can customise your preferences below.
+    </p>
+<p class="text-[11px] text-stone-800 font-medium mb-3">
+      You can accept all, reject all, or customise which <span class="underline">cookies you'd like to</span> allow.
+    </p>
+<div class="flex items-center gap-2 mb-2">
+<button class="flex-1 border border-stone-900 text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-100 transition" onclick="document.getElementById('cookieModal').remove()">
+        Reject All
+      </button>
+<button class="flex-1 border border-stone-300 text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-100 transition" onclick="document.getElementById('cookieModal').remove()">
+        Customise
+      </button>
+</div>
+<button class="w-full bg-stone-950 text-white text-[10px] tracking-wider uppercase font-semibold py-2 hover:bg-stone-800 transition" onclick="document.getElementById('cookieModal').remove()">
+      Accept All
+    </button>
+</div>
+<!-- END: CookieConsentModal -->
+</body></html>
