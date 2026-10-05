@@ -1,694 +1,305 @@
 <!DOCTYPE html>
-
-<html lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
-<title>miikorean | Korean &amp; Asian Beauty Curated</title>
-<!-- Tailwind CSS v3 with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
-<script>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Justmylook - Free delivery on your favourite beauty essentials</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            'lavender-primary': '#8e729e',
-            'lavender-dark': '#775787',
-            'lavender-light': '#f5f0fb',
-            'lavender-soft': '#fbf0ff',
-            'plum-deep': '#221631',
-            'plum-footer': '#1f162b',
-            'plum-card': '#30223d',
-            'plum-border': '#4a385e',
-            'lilac-tag': '#a37eb8',
-            'wisteria': '#9d72b8',
-            'trustpilot-green': '#00b67a',
-          },
           fontFamily: {
-            serif: ['Bodoni Moda', 'Playfair Display', 'Georgia', 'serif'],
-            sans: ['Plus Jakarta Sans', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            primary: '#000000',
+            secondary: '#ffffff',
+            accent: '#e6007e', // Justmylook pink/magenta
+            gray: {
+              100: '#f5f5f5',
+              200: '#e5e5e5',
+              300: '#d4d4d4',
+              400: '#a3a3a3',
+              500: '#737373',
+              600: '#525252',
+              800: '#262626',
+              900: '#171717',
+            }
           }
         }
       }
     }
   </script>
-<!-- BEGIN: Custom Styles -->
-<style data-purpose="typography">
-    .brand-logo {
-      font-family: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
-      letter-spacing: -0.5px;
-    }
-    .serif-title {
-      font-family: 'Bodoni Moda', 'Playfair Display', Georgia, serif;
-    }
+  <style>
+    /* Custom scrollbar for carousels */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   </style>
-<style data-purpose="layout-utilities">
-    /* Hide horizontal scrollbar while preserving fluid touch scrolling on mobile */
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    /* Continuous smooth marquee ticker */
-    @keyframes marquee {
-      0% { transform: translateX(0%); }
-      100% { transform: translateX(-50%); }
-    }
-    .animate-marquee {
-      display: flex;
-      width: max-content;
-      animation: marquee 25s linear infinite;
-    }
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
-  </style>
-<!-- END: Custom Styles -->
 </head>
-<body class="bg-white text-black font-sans antialiased overflow-x-hidden">
-<!-- BEGIN: TopAnnouncementBar -->
-<aside class="bg-[#0e0e0e] text-white text-[11px] font-medium tracking-tight py-2 overflow-hidden relative select-none border-b border-black" data-purpose="announcement-ticker">
-<div class="animate-marquee flex items-center gap-6 whitespace-nowrap">
-<!-- Sequence 1 -->
-<div class="flex items-center gap-6">
-<span>✨ Free UK Delivery Over £30</span>
-<span class="text-white/40 text-xs">•</span>
-<span>🎁 Unlock Exclusive Gifts &amp; Offers <a class="font-bold underline hover:opacity-90 ml-0.5" href="#">Join miikorean Club →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>🏆 miikorean Beauty Awards: <a class="font-semibold underline hover:opacity-90 ml-0.5" href="#">See the winners →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>⚡ Express Shipping Available at Checkout</span>
-<span class="text-white/40 text-xs">•</span>
-<span>⭐ Rated 4.7 (Excellent) on Trustpilot</span>
-</div>
-<span class="text-white/40 text-xs">•</span>
-<!-- Sequence 2 -->
-<div class="flex items-center gap-6">
-<span>✨ Free UK Delivery Over £30</span>
-<span class="text-white/40 text-xs">•</span>
-<span>🎁 Unlock Exclusive Gifts &amp; Offers <a class="font-bold underline hover:opacity-90 ml-0.5" href="#">Join miikorean Club →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>🏆 miikorean Beauty Awards: <a class="font-semibold underline hover:opacity-90 ml-0.5" href="#">See the winners →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>⚡ Express Shipping Available at Checkout</span>
-<span class="text-white/40 text-xs">•</span>
-<span>⭐ Rated 4.7 (Excellent) on Trustpilot</span>
-</div>
-</div>
-</aside>
-<!-- END: TopAnnouncementBar -->
-<!-- BEGIN: MainHeader -->
-<header class="bg-white/95 backdrop-blur-md border-b border-black/10 sticky top-0 z-40" data-purpose="site-navigation-header">
-<div class="px-4 py-3 flex items-center justify-between">
-<!-- Left icons -->
-<div class="flex items-center space-x-3.5">
-<button aria-label="Open menu" class="text-black hover:opacity-70 transition p-0.5" type="button">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<button aria-label="Favorites" class="relative text-black hover:opacity-70 transition p-0.5" type="button">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-<span class="absolute -top-0.5 -right-0.5 bg-black text-white text-[9px] font-bold rounded-full w-3.5 h-3.5 flex items-center justify-center">0</span>
-</button>
-</div>
-<!-- Center Logo: Obsidian Black miikorean -->
-<a class="brand-logo text-black font-bold text-[28px] lowercase tracking-tight transition-opacity hover:opacity-80" href="#">
-        miikorean
-      </a>
-<!-- Right icons -->
-<div class="flex items-center space-x-3">
-<button aria-label="User Account" class="relative text-black hover:opacity-70 transition p-0.5" type="button">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24">
-<path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-<span class="absolute top-0.5 right-0.5 w-1.5 h-1.5 bg-black rounded-full"></span>
-</button>
-<button aria-label="Shopping Cart" class="relative text-black hover:opacity-70 transition p-0.5" type="button">
-<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.6" viewbox="0 0 24 24">
-<path d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-<span class="absolute -top-1 -right-1 text-[10px] font-bold text-black rounded-full w-4 h-4 flex items-center justify-center">0</span>
-</button>
-</div>
-</div>
-<!-- Search Input Bar -->
-<div class="px-4 pb-3 pt-0.5">
-<div class="relative flex items-center">
-<div class="absolute left-3.5 pointer-events-none text-gray-500">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-<path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</div>
-<input class="w-full bg-[#f4f4f4] text-black placeholder-gray-500 text-sm rounded-full pl-10 pr-4 py-2 border border-gray-200 focus:outline-none focus:ring-1 focus:ring-black" placeholder="Search products, brands, concerns..." type="search"/>
-</div>
-</div>
-</header>
-<!-- END: MainHeader -->
-<main>
-<!-- BEGIN: HeroSection -->
-<section class="relative bg-[#f8f8f8] overflow-hidden" data-purpose="hero-carousel">
-<div class="relative w-full">
-<img alt="Purito Serum Collection - Powerful Ingredients Targeted Results" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida/AEtjO1WrrBJqnK4wKWaBvl1NFAEEAEEldfJQ98a-dO6GA0k7A0---kiEBK0eNJg1DzFdIm6Pn6Fe-Y4EcoagIHejk_VXymntmG9KvLflrd94Wzm-o0pu9YlR3RLtmNoJEA5j_SZz14L0M6plGfHTPPKOri9uuipk2Vgpjt6xJUIOKkq6yRjwlenA2HF2GTX4VyQ9K9yofJr5rSbpt6owtkPK7g68U_ySIfwoApueYOfHEEiFODIKr_L1gDumvuJs"/>
-<!-- Obsidian Arrows -->
-<button aria-label="Previous slide" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/85 text-white flex items-center justify-center shadow-md hover:bg-black transition" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
-<path d="M15.75 19.5L8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<button aria-label="Next slide" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/85 text-white flex items-center justify-center shadow-md hover:bg-black transition" type="button">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
-<path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-</div>
-<!-- Hero CTA -->
-<div class="text-center px-4 pb-6 pt-1 bg-gradient-to-b from-[#f8f8f8] to-white">
-<div class="flex justify-center mt-3">
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white font-medium text-sm px-7 py-2.5 rounded-full shadow-sm transition" href="#">
-            Shop Now <span class="ml-1.5 text-base">→</span>
-</a>
-</div>
-<!-- Slider Pagination Bar Indicator -->
-<div class="flex justify-center items-center gap-1.5 mt-3">
-<div class="w-6 h-[2.5px] bg-black rounded-full"></div>
-<div class="w-6 h-[2.5px] bg-gray-300 rounded-full"></div>
-</div>
-</div>
-</section>
-<!-- END: HeroSection -->
-<!-- BEGIN: CuratedForYouSection -->
-<section class="py-8 bg-white border-t border-gray-100" data-purpose="curated-products-carousel">
-<h2 class="serif-title text-center text-2xl font-bold text-black tracking-tight mb-4">
-        Curated For You
-      </h2>
-<!-- Tabs -->
-<div class="flex justify-center items-center space-x-6 text-sm mb-6">
-<button class="font-semibold text-black relative pb-1 border-b-2 border-black" type="button">
-          Holy Grails
-        </button>
-<div class="w-[1px] h-4 bg-gray-200"></div>
-<button class="text-gray-500 hover:text-black pb-1" type="button">
-          New Arrivals
-        </button>
-</div>
-<!-- Horizontal Scrollable Product Cards -->
-<div class="flex gap-4 overflow-x-auto no-scrollbar px-4 pb-4 snap-x">
-<!-- Product 1 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              COMBINATION SKIN
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="MANYO Pure Cleansing Oil" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm2wzg1baQ7Znp1wjgfnZC5OpmmlA4NqS2h6NA-51wzQBOWEIX1Debe-efXUKNBJvMRD_TAYREIGKHYbo_nURH7xhn89rRUd3dv2vPVQa8peY7MaHJb0HAiAvxbzkCeiNpWEcPTlY42Y8ksb6vySUo2JBhoG3VQ5g0FFXO-WKrCecQjJ3f6JG9YcLadrH9wc3XWBVDAo8AltGVrGLn_0WzyvvDpigViaJOklbSjGCc0qBao4poYPa3pTk4"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded shadow-xs border border-gray-200">
-              CRUELTY-FREE
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">MANYO</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Pure Cleansing Oil (200ml)</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(31)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,200.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Product 2 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              REDNESS &amp; POST-ACNE
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="ANUA Azelaic Acid 10 Hyaluron Soothing" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1XIHhM2FKIFWCv-XRsWt7HDpmwRTPWSmWz8J8XsJaHhdmCF_ISp0i0OCwJ5H8a3Nk2HUaKbozMsTyXtYa8DX_eS7OYdmWY6EMvVjpHmYQIh7iYmUCKB4iT4LncnfpOZRaROh4SQ6hbeaKZDsBmi9neD4ov82zCjPHbCHCxVxTVRuw6QGOAwdpn23AZadU5y-hl1ZM_XynGpQBxO-Ee6CToxAQPAGIG_1pv4n56-7frwI1zqsEdwl3u_bNA"/>
-<div class="absolute bottom-2 left-2 flex gap-1">
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">VEGAN</span>
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">CRUELTY-FREE</span>
-</div>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">ANUA</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Azelaic Acid 10 Hyaluron Soothing...</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(47)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,700.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Product 3 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              BESTSELLER
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="S.NATURE Aqua Squalane Moisturizing Cream" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1WScPn1dwM_AbDQ_uWYvkhCxPl55xuEtI7H1FprEszs4a3Hsqy0V44Fse72yHaaMVzATToDZrKOBZsQ1fiPpmzUEetpeh1jPAoO452IoHn0hHj2OyLv9fXCIc9ynNwYelc3FRD6ijHCGycRwPw8xG_JynTfhUiIsi3ozBkyQs4suOe1luSnAvPNyVSbH4hEMAIyJjJ8jfypes2sIcwjLL_7jRnGYf_NK62SLYx3el78JbAelDXcWNj7wkpf"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">
-              VEGAN
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">S.NATURE</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Aqua Squalane Moisturizing Cream</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(89)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,500.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-</div>
-<!-- Section Footer Divider and View All Pill Button -->
-<div class="mt-4 px-6 text-center">
-<div class="w-48 h-[1px] bg-gray-200 mx-auto mb-4"></div>
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-xs font-medium px-8 py-2.5 rounded-full shadow-sm transition" href="#">
-          View All <span class="ml-1 text-sm">→</span>
-</a>
-</div>
-</section>
-<!-- END: CuratedForYouSection -->
-<!-- BEGIN: MostSearchedSection -->
-<section class="py-8 px-4 bg-white" data-purpose="most-searched-categories">
-<h2 class="serif-title text-center text-2xl font-bold text-black tracking-tight mb-6">
-        Most Searched
-      </h2>
-<div class="grid grid-cols-3 gap-y-6 gap-x-4 max-w-sm mx-auto text-center">
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="C-Beauty Collection" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UtmubctKTJmVSqjVIzEFTr2pK5Y12RZ8O321t0xHBuimXAg5588SIdbrL-vMhJT5G6FP8NCu6IY-o0SEyzeq4kJlf09REaNMX6bBohpemety3dp7hxzGEagHAC7_6F4mTedk5LtdGFOX7MhCxEe33vATjBuwE5voCL2ItfBRbUN3IPyxLOtmQmtN26KKpO9iqY4gfJYxMV2Bd1FSbIvGngY9K3rrgmZ4rDMCB6Hk9U8kwPTzltuETyFsH1"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">C-Beauty</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Collectibles" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VTLl-kQfetXAuLf9mwXd7W1McahJHX5H_VvfuAPXCg1kUh4n-CDl7A9kOCggg15f4H63uwKKzgTfdAvbsSfWO0Db1WDYEIh6ehAEcW4QjoTRPAEar-kZhNlnRGkLem1qTwE9zMPkUhFh2LS_l7iAetyODozgP4_u5OKnnvv4vsKm5Zr6EHgBUnGcHrErfRIJBmi7lRN61FVColp4EdYh8jobse78sn_Ngt8LIsRJ1inX_GjjoaPROQwwWR"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Collectibles</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Retinol" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X1_oXauWlAiHHQRluif8vln901wix_ciLfhBXjlf-uTGyMMqTHWMIOIcFAODJPXnF1TaWaKBl3TuIqwHYK2mvq6uvUC2yvVcDw4ud6vAqBxTaCjiZWVEf1TV9oGi4Mc1oe6Pta6Jj4qESOJjOIGHCOCM04izED6JV7Jx1cMKuVVEvah-y7svlGtd-bhh08wJ712mFMVQ6gVsocq8jQ-1_8pMhp7n2uNIP9XChlXXWLsDvgWjBCvi8SlIJl"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Retinol</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Sunscreen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XbrpSVTWE2C4ypx5Ph5UcMBr1gayj2JAtaD3udDWr1QX2BiiR0PZjbmt0SfAeZN_c133iSUIw5l9GjrnWdGkztiUUqAVAVJiRMNa_SuuxwQQSI1rlZXE2RtAiUCtfKBIJHyMRS4RsKNAUBSqNaC81ytuj5HpPlPwlYeBU_tG1rH6x8AEByofZ1wobSpoXppTD1zK4lB8_krcXW6jfzQv629rpmndKwYkx3kkYOu6BTDWCAwJXXnDcABYI"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">SPF</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Facial Masks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XsUDILMtKpNQWo1qC01EG3KwEZMu7GWbuLTbZsy_O8Wy1JSwM-2ngnkz4hj4f__3TAWJObMCHbvyADqyjkOk021pcRm5Vf5UvyYAH8HEdfSMDSOjz12CelTG4y3lNV9YA3yj_EAku6_RCoGA_S2PPVfMlDt-hmI1_xqmrjjnymgKMgjXGMQRl0aFzCnes_hfSkPtFzOuxkKiqflJB83zAYucBpLeZsKouNXcpmQBs_zJ8Q2LSQCwWgjNQL"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Masks</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Toner" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Xq7RLBshdbPh6auTD81tQNWSTPmPDaAnTg6he4pYr5e3xTyvSbScaEFjqpweXuWl4YbuPBbL1nMIriCTIbYvdTUnow-gUm42vMSjosB7fOOq3fqN3P7s95ml63k94-UVCrtDybAabJE-8zoNN-VqyJqcUxMRcbsmgX9hhGJtestYlFkXrq-EETzywkabY1C9BuVcsfww_iA45ijCqRZ05fvSUR45QLBkqCKgSJEcRdfyxwKoRAQJogmLfB"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Toner</span>
-</a>
-</div>
-</section>
-<!-- END: MostSearchedSection -->
-<!-- BEGIN: ProblemSolverCard -->
-<section class="py-6 px-4" data-purpose="interactive-skin-concern-box">
-<div class="bg-[#f7f7f7] border border-gray-300 rounded-[32px] p-6 text-center max-w-sm mx-auto shadow-sm">
-<p class="text-xs text-neutral-600 font-semibold mb-2 tracking-wide uppercase">
-          What are you looking for today?
-        </p>
-<h3 class="serif-title text-black text-2xl font-bold leading-tight">
-          I'm looking for<br/>help with
-        </h3>
-<div class="inline-flex items-center gap-1.5 border-b-2 border-black pb-1 mt-1 mb-6 cursor-pointer hover:opacity-70 transition-opacity">
-<span class="serif-title text-2xl font-bold text-black tracking-tight">pigmentation</span>
-<svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
-<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</div>
-<div>
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-sm font-medium px-7 py-2.5 rounded-full shadow transition" href="#">
-            Shop Now <span class="ml-1 text-base">→</span>
-</a>
-</div>
-</div>
-</section>
-<!-- END: ProblemSolverCard -->
-<!-- BEGIN: ShopByCategorySection -->
-<section class="py-8 bg-white border-t border-gray-100" data-purpose="shop-by-category-carousel">
-<h2 class="serif-title text-center text-2xl font-bold text-black tracking-tight mb-4">
-        Shop By Category
-      </h2>
-<div class="flex justify-center items-center space-x-5 text-sm mb-6">
-<button class="font-semibold text-black pb-1 border-b-2 border-black" type="button">
-          Skincare
-        </button>
-<div class="w-[1px] h-4 bg-gray-200"></div>
-<button class="text-gray-500 hover:text-black pb-1" type="button">
-          Make Up
-        </button>
-<div class="w-[1px] h-4 bg-gray-200"></div>
-<button class="text-gray-500 hover:text-black pb-1" type="button">
-          Hair &amp; Body
-        </button>
-</div>
-<div class="flex gap-4 overflow-x-auto no-scrollbar px-4 pb-4 snap-x">
-<!-- Category Product 1 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="S.NATURE Aqua Rice Cleansing Oil" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1XVe0MbVS0SRJ_qIn2wLS1xEA4xrDw8gQa45fDgT24a4011mXPjOTFjOM0zIAwUMeI509LECI69Gj21bNdCMzyCTgb5b7pVugth0GqBlxvPPci_pdlaAW55AhoOU2bXXD8_2uzNmZjZO1CBgrD6_FqhmZeUEQV_U4CwQqDTgbDEPI7Qkar9Dsv7Tw-aUQ6tMrGbrdbd2LkO-l6DnCwfLRuFdIIpoKusdZh604Pbke8QTU7uve_KaPMG2w8"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">
-              VEGAN
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">S.NATURE</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Aqua Rice Cleansing Oil (200ml)</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(5)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,200.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Category Product 2 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              OILY SKIN
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="ANUA Heartleaf Pore Deep Cleansing Foam" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1VaX7K099A6RzQ-6Pfp5mlL3ExsM4qV9BwaL3EgM7aHAzwNHwDYQeSS27uj9-NZDP65d5l67CJcR3t8EG3jTfD01G0i-UbRxADrJAnb_ty0C3-1iPeM40nlwYhde10vpRK_25hMDSy1jnPrh70X0NlNDUE17kZnPo4FrYtp5_iJPHtWsLHe7JTcRsR7bIvop4QKB6BHrHn_VZyIIxz768ewqEsZ5U1_qv_9vAHqrtsKtZSezZYEYfo8o8c"/>
-<div class="absolute bottom-2 left-2 flex gap-1">
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">VEGAN</span>
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">CRUELTY-FREE</span>
-</div>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">ANUA</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Heartleaf Quercetinol Pore Deep Cleansing...</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(247)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 1,500.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Category Product 3 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              DRY SKIN
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="S.NATURE Aqua Squalane Moisturizing Cream" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1WScPn1dwM_AbDQ_uWYvkhCxPl55xuEtI7H1FprEszs4a3Hsqy0V44Fse72yHaaMVzATToDZrKOBZsQ1fiPpmzUEetpeh1jPAoO452IoHn0hHj2OyLv9fXCIc9ynNwYelc3FRD6ijHCGycRwPw8xG_JynTfhUiIsi3ozBkyQs4suOe1luSnAvPNyVSbH4hEMAIyJjJ8jfypes2sIcwjLL_7jRnGYf_NK62SLYx3el78JbAelDXcWNj7wkpf"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">
-              VEGAN
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">S.NATURE</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Aqua Squalane Moisturizing Cream</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(89)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,700.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-</div>
-<!-- Section Footer Divider and View All Pill Button -->
-<div class="mt-4 px-6 text-center">
-<div class="w-48 h-[1px] bg-gray-200 mx-auto mb-4"></div>
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-xs font-medium px-8 py-2.5 rounded-full shadow-sm transition" href="#">
-          View All <span class="ml-1 text-sm">→</span>
-</a>
-</div>
-</section>
-<!-- END: ShopByCategorySection -->
-<!-- BEGIN: TrustpilotReviewsSection -->
-<section class="py-10 px-4 bg-[#f8f8f8] border-y border-gray-200" data-purpose="customer-reviews-section">
-<h2 class="serif-title italic text-center text-3xl font-normal text-black tracking-tight mb-3">
-        loved by miikorean cherubs
-      </h2>
-<div class="flex flex-col items-center justify-center mb-6">
-<div class="flex items-center gap-1.5 mb-1.5">
-<svg class="w-5 h-5 text-[#00b67a]" fill="currentColor" viewbox="0 0 24 24">
-<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
-</svg>
-<span class="font-bold text-black text-base tracking-tight">Trustpilot</span>
-</div>
-<div class="flex gap-0.5 mb-2">
-<div class="w-5 h-5 bg-[#00b67a] flex items-center justify-center text-white text-[11px]">★</div>
-<div class="w-5 h-5 bg-[#00b67a] flex items-center justify-center text-white text-[11px]">★</div>
-<div class="w-5 h-5 bg-[#00b67a] flex items-center justify-center text-white text-[11px]">★</div>
-<div class="w-5 h-5 bg-[#00b67a] flex items-center justify-center text-white text-[11px]">★</div>
-<div class="w-5 h-5 bg-[#00b67a] flex items-center justify-center text-white text-[11px]">★</div>
-</div>
-<p class="text-xs text-neutral-600">
-          Rated <span class="font-semibold text-black">4.7 (Excellent)</span> from 6,000+ reviews
-        </p>
-</div>
-<div class="flex gap-4 overflow-x-auto no-scrollbar snap-x pb-2">
-<!-- Review Card 1 -->
-<div class="bg-white border border-gray-200 rounded-2xl p-4 flex-shrink-0 w-64 snap-start shadow-sm flex flex-col justify-between" data-purpose="review-card">
-<div>
-<div class="flex items-center justify-between mb-2">
-<div class="flex gap-0.5 text-white text-[9px]">
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-</div>
-<span class="text-[10px] text-gray-500 font-medium flex items-center gap-0.5">
-<svg class="w-3 h-3 text-[#00b67a]" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
-<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-                VERIFIED
-              </span>
-</div>
-<h4 class="serif-title font-bold text-sm text-black mb-1">Amazing products at...</h4>
-<p class="text-xs text-neutral-600 line-clamp-3 leading-relaxed">
-              Amazing products at reasonable price and love that they give a freebie of products to try. I already...
-            </p>
-</div>
-<span class="text-[11px] text-gray-400 mt-3 block">Sept 2026</span>
-</div>
-<!-- Review Card 2 -->
-<div class="bg-white border border-gray-200 rounded-2xl p-4 flex-shrink-0 w-64 snap-start shadow-sm flex flex-col justify-between" data-purpose="review-card">
-<div>
-<div class="flex items-center justify-between mb-2">
-<div class="flex gap-0.5 text-white text-[9px]">
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-<span class="w-4 h-4 bg-[#00b67a] flex items-center justify-center">★</span>
-</div>
-<span class="text-[10px] text-gray-500 font-medium flex items-center gap-0.5">
-<svg class="w-3 h-3 text-[#00b67a]" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
-<path d="M4.5 12.75l6 6 9-13.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-                VERIFIED
-              </span>
-</div>
-<h4 class="serif-title font-bold text-sm text-black mb-1">Fast delivery</h4>
-<p class="text-xs text-neutral-600 line-clamp-3 leading-relaxed">
-              Fast delivery and everything arrived safely packaged! The glow on my skin is unreal.
-            </p>
-</div>
-<span class="text-[11px] font-semibold text-black mt-3 block">Nor-ain</span>
-</div>
-</div>
-</section>
-<!-- END: TrustpilotReviewsSection -->
-</main>
-<!-- BEGIN: CompleteFooter (Obsidian Luxury Black #0c0c0c) -->
-<footer class="bg-[#0c0c0c] text-white pt-10 pb-8 px-5 border-t border-neutral-900" data-purpose="site-footer">
-<div class="text-center mb-6">
-<h3 class="brand-logo text-3xl font-bold text-white lowercase tracking-normal">miikorean</h3>
-<p class="text-xs text-neutral-400 mt-1.5 max-w-xs mx-auto">Your curated destination for genuine Korean skincare, glass-skin essentials &amp; everyday beauty ritual.</p>
-</div>
-<div class="bg-[#161616] rounded-2xl p-5 mb-8 border border-neutral-800 shadow-[0_8px_30px_rgba(0,0,0,0.45)] text-center backdrop-blur-sm">
-<h4 class="serif-title text-base font-bold text-white mb-1">Sign Up &amp; Receive 10% Off</h4>
-<p class="text-[12px] text-neutral-400 mb-3">Join the miikorean Club for secret drops, beauty tips &amp; special gifts.</p>
-<form class="flex flex-col gap-2.5 max-w-xs mx-auto" onsubmit="event.preventDefault();">
-<input class="w-full bg-white text-black placeholder-neutral-500 text-xs px-4 py-2.5 rounded-full border-none focus:outline-none focus:ring-2 focus:ring-white" placeholder="Enter your email address" required="" type="email"/>
-<button class="w-full bg-white hover:bg-neutral-200 text-black text-xs font-semibold py-2.5 rounded-full transition shadow-sm" type="submit">
-      Subscribe
-    </button>
-</form>
-</div>
-<!-- Social Links -->
-<div class="flex items-center justify-center gap-4 mb-8">
-<a aria-label="Instagram" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
-</a>
-<a aria-label="TikTok" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-1.01-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.24 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"></path></svg>
-</a>
-<a aria-label="Pinterest" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.369-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"></path></svg>
-</a>
-<a aria-label="YouTube" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
-</a>
-<a aria-label="Facebook" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white hover:text-black transition" href="#">
-<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path></svg>
-</a>
-</div>
-<!-- Expandable Accordion Menu Sections -->
-<div class="border-t border-b border-neutral-900 divide-y divide-neutral-900 mb-6">
-<details class="group py-3.5">
-<summary class="flex justify-between items-center cursor-pointer list-none text-sm font-semibold tracking-wide text-white">
-<span>Customer Care</span>
-<span class="transition group-open:rotate-180">
-<svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</span>
-</summary>
-<ul class="pt-3 pb-1 space-y-2 text-xs text-neutral-400">
-<li><a class="hover:text-white transition" href="#">Contact Us</a></li>
-<li><a class="hover:text-white transition" href="#">Delivery &amp; Returns</a></li>
-<li><a class="hover:text-white transition" href="#">Help &amp; FAQs</a></li>
-<li><a class="hover:text-white transition" href="#">Store Locator</a></li>
-<li><a class="hover:text-white transition" href="#">Track Order</a></li>
-</ul>
-</details>
-<details class="group py-3.5">
-<summary class="flex justify-between items-center cursor-pointer list-none text-sm font-semibold tracking-wide text-white">
-<span>Explore miikorean</span>
-<span class="transition group-open:rotate-180">
-<svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</span>
-</summary>
-<ul class="pt-3 pb-1 space-y-2 text-xs text-neutral-400">
-<li><a class="hover:text-white transition" href="#">About Us</a></li>
-<li><a class="hover:text-white transition" href="#">Korean Skincare Routine</a></li>
-<li><a class="hover:text-white transition" href="#">Ingredients Glossary</a></li>
-<li><a class="hover:text-white transition" href="#">Loyalty Program (miikorean Club)</a></li>
-<li><a class="hover:text-white transition" href="#">miikorean Beauty Awards</a></li>
-<li><a class="hover:text-white transition" href="#">Press &amp; Media</a></li>
-<li><a class="hover:text-white transition" href="#">Careers</a></li>
-<li><a class="hover:text-white transition" href="#">The miikorean Blog</a></li>
-</ul>
-</details>
-<details class="group py-3.5">
-<summary class="flex justify-between items-center cursor-pointer list-none text-sm font-semibold tracking-wide text-white">
-<span>Legal &amp; Policies</span>
-<span class="transition group-open:rotate-180">
-<svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</span>
-</summary>
-<ul class="pt-3 pb-1 space-y-2 text-xs text-neutral-400">
-<li><a class="hover:text-white transition" href="#">Terms &amp; Conditions</a></li>
-<li><a class="hover:text-white transition" href="#">Privacy Policy</a></li>
-<li><a class="hover:text-white transition" href="#">Refund &amp; Cancellation Policy</a></li>
-<li><a class="hover:text-white transition" href="#">Cookie Preferences</a></li>
-</ul>
-</details>
-</div>
-<!-- Region & Currency Selector -->
-<div class="mb-6 flex justify-center">
-<div class="relative inline-block text-left w-full max-w-xs">
-<label class="block text-[11px] text-neutral-400 mb-1 text-center" for="country-selector">Country / Region</label>
-<div class="relative">
-<select class="w-full appearance-none bg-neutral-900 border border-neutral-800 text-white text-xs rounded-full py-2.5 pl-4 pr-10 focus:outline-none focus:ring-1 focus:ring-white cursor-pointer" id="country-selector">
-<option class="text-gray-900" selected="" value="GB">🇬🇧 United Kingdom (GBP £)</option>
-<option class="text-gray-900" value="US">🇺🇸 United States (USD $)</option>
-<option class="text-gray-900" value="EU">🇪🇺 European Union (EUR €)</option>
-<option class="text-gray-900" value="IN">🇮🇳 India (INR Rs.)</option>
-<option class="text-gray-900" value="AU">🇦🇺 Australia (AUD $)</option>
-</select>
-<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-neutral-400">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
-<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</div>
-</div>
-</div>
-</div>
-<!-- Authentic Korean Beauty & Copyright -->
-<div class="text-center space-y-3 pt-2">
-<div class="flex items-center justify-center gap-2 text-xs text-neutral-400">
-<svg class="w-4 h-4 text-[#00b67a]" fill="currentColor" viewbox="0 0 24 24">
-<path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"></path>
-</svg>
-<span>100% Authentic Korean Beauty Guaranteed</span>
-</div>
-<p class="text-[11px] text-neutral-500">© 2025 miikorean. All rights reserved.</p>
-</div>
-</footer>
-<!-- END: CompleteFooter -->
-</body></html>
+<body class="font-sans antialiased text-gray-900 bg-white">
+
+  <!-- Announcement Bar -->
+  <div class="bg-black text-white text-xs font-semibold py-2 text-center tracking-wide flex justify-center items-center gap-4">
+    <span>Free UK Delivery Over £15</span>
+    <span class="hidden sm:inline">|</span>
+    <span class="hidden sm:inline">Rated Excellent on Trustpilot</span>
+  </div>
+
+  <!-- Header -->
+  <header class="border-b border-gray-200 sticky top-0 bg-white z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Mobile menu button -->
+        <div class="flex items-center sm:hidden">
+          <button type="button" class="text-gray-900 p-2">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center justify-center sm:justify-start w-full sm:w-auto">
+          <a href="#" class="text-3xl font-black tracking-tighter lowercase">
+            justmylook
+          </a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="hidden sm:flex flex-1 mx-8 max-w-2xl">
+          <div class="relative w-full">
+            <input type="text" class="w-full bg-gray-100 border-transparent rounded-full py-2.5 pl-4 pr-10 text-sm focus:bg-white focus:border-black focus:ring-1 focus:ring-black placeholder-gray-500" placeholder="Search for products, brands..." />
+            <button class="absolute inset-y-0 right-0 flex items-center pr-4">
+              <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Icons -->
+        <div class="hidden sm:flex items-center space-x-6">
+          <a href="#" class="text-gray-900 hover:text-accent transition flex flex-col items-center">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
+            <span class="text-[10px] mt-1 font-medium">Account</span>
+          </a>
+          <a href="#" class="text-gray-900 hover:text-accent transition flex flex-col items-center">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
+            <span class="text-[10px] mt-1 font-medium">Wishlist</span>
+          </a>
+          <a href="#" class="text-gray-900 hover:text-accent transition flex flex-col items-center relative">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+            <span class="text-[10px] mt-1 font-medium">Basket</span>
+            <span class="absolute -top-1 -right-2 bg-accent text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navigation menu -->
+    <nav class="hidden sm:block border-t border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ul class="flex justify-center space-x-8 py-3 text-sm font-semibold tracking-tight text-gray-800 uppercase">
+          <li><a href="#" class="hover:text-accent transition">Brands</a></li>
+          <li><a href="#" class="hover:text-accent transition">Skincare</a></li>
+          <li><a href="#" class="hover:text-accent transition">Haircare</a></li>
+          <li><a href="#" class="hover:text-accent transition">Makeup</a></li>
+          <li><a href="#" class="hover:text-accent transition">Fragrance</a></li>
+          <li><a href="#" class="hover:text-accent transition">Body</a></li>
+          <li><a href="#" class="hover:text-accent transition">Men</a></li>
+          <li><a href="#" class="text-accent hover:text-black transition">Offers</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Banner -->
+    <section class="relative bg-gray-100">
+      <div class="w-full aspect-[21/9] md:aspect-[24/7] bg-gray-200 relative overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?q=80&w=2000&auto=format&fit=crop" alt="Beauty essentials" class="w-full h-full object-cover object-center" />
+        <div class="absolute inset-0 bg-black/20 flex flex-col justify-center px-8 md:px-16 lg:px-32 text-white">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 drop-shadow-md">The Big Beauty Event</h1>
+          <p class="text-lg md:text-xl max-w-md font-medium mb-6 drop-shadow-md">Up to 30% off top brands including CeraVe, Olaplex, and more.</p>
+          <div>
+            <a href="#" class="inline-block bg-white text-black font-bold px-8 py-3 rounded hover:bg-gray-100 transition shadow-lg">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top Categories -->
+    <section class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-center mb-8">Shop by Category</h2>
+      <div class="grid grid-cols-2 md:grid-cols-6 gap-4 text-center">
+        <a href="#" class="group">
+          <div class="w-full aspect-square rounded-full overflow-hidden mb-3 bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <span class="font-semibold text-sm group-hover:text-accent transition">Skincare</span>
+        </a>
+        <a href="#" class="group">
+          <div class="w-full aspect-square rounded-full overflow-hidden mb-3 bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <span class="font-semibold text-sm group-hover:text-accent transition">Haircare</span>
+        </a>
+        <a href="#" class="group">
+          <div class="w-full aspect-square rounded-full overflow-hidden mb-3 bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <span class="font-semibold text-sm group-hover:text-accent transition">Makeup</span>
+        </a>
+        <a href="#" class="group">
+          <div class="w-full aspect-square rounded-full overflow-hidden mb-3 bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <span class="font-semibold text-sm group-hover:text-accent transition">Fragrance</span>
+        </a>
+        <a href="#" class="group">
+          <div class="w-full aspect-square rounded-full overflow-hidden mb-3 bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1612817288484-6f916006741a?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <span class="font-semibold text-sm group-hover:text-accent transition">Bath & Body</span>
+        </a>
+        <a href="#" class="group">
+          <div class="w-full aspect-square rounded-full overflow-hidden mb-3 bg-gray-100">
+            <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=300&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-110 transition duration-500" />
+          </div>
+          <span class="font-semibold text-sm group-hover:text-accent transition">Gifts</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Bestsellers -->
+    <section class="py-12 bg-gray-50 border-t border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center mb-8">
+          <h2 class="text-2xl font-bold">Trending Now</h2>
+          <a href="#" class="text-sm font-semibold underline hover:text-accent">View All</a>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <!-- Product Card 1 -->
+          <div class="group relative bg-white p-4 shadow-sm hover:shadow-md transition">
+            <div class="aspect-[4/5] bg-gray-100 mb-4 relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1617897903246-719242758050?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-contain" />
+              <div class="absolute top-2 left-2 bg-black text-white text-[10px] font-bold px-2 py-1 uppercase">Save 15%</div>
+            </div>
+            <p class="text-xs text-gray-500 uppercase font-semibold mb-1">CeraVe</p>
+            <h3 class="text-sm font-medium h-10 line-clamp-2 mb-2"><a href="#">Hydrating Cleanser with Hyaluronic Acid</a></h3>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="font-bold text-lg">£10.50</span>
+              <span class="text-sm text-gray-400 line-through">£12.50</span>
+            </div>
+            <button class="w-full bg-black text-white font-bold py-2 hover:bg-gray-800 transition">Add to Basket</button>
+          </div>
+          <!-- Product Card 2 -->
+          <div class="group relative bg-white p-4 shadow-sm hover:shadow-md transition">
+            <div class="aspect-[4/5] bg-gray-100 mb-4 relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-contain" />
+            </div>
+            <p class="text-xs text-gray-500 uppercase font-semibold mb-1">Olaplex</p>
+            <h3 class="text-sm font-medium h-10 line-clamp-2 mb-2"><a href="#">No.3 Hair Perfector</a></h3>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="font-bold text-lg">£28.00</span>
+            </div>
+            <button class="w-full bg-black text-white font-bold py-2 hover:bg-gray-800 transition">Add to Basket</button>
+          </div>
+          <!-- Product Card 3 -->
+          <div class="group relative bg-white p-4 shadow-sm hover:shadow-md transition">
+            <div class="aspect-[4/5] bg-gray-100 mb-4 relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-contain" />
+              <div class="absolute top-2 left-2 bg-accent text-white text-[10px] font-bold px-2 py-1 uppercase">Best Seller</div>
+            </div>
+            <p class="text-xs text-gray-500 uppercase font-semibold mb-1">The Ordinary</p>
+            <h3 class="text-sm font-medium h-10 line-clamp-2 mb-2"><a href="#">Niacinamide 10% + Zinc 1%</a></h3>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="font-bold text-lg">£5.00</span>
+            </div>
+            <button class="w-full bg-black text-white font-bold py-2 hover:bg-gray-800 transition">Add to Basket</button>
+          </div>
+          <!-- Product Card 4 -->
+          <div class="group relative bg-white p-4 shadow-sm hover:shadow-md transition">
+            <div class="aspect-[4/5] bg-gray-100 mb-4 relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1629198688000-71f23e745b6e?q=80&w=400&auto=format&fit=crop" class="w-full h-full object-contain" />
+            </div>
+            <p class="text-xs text-gray-500 uppercase font-semibold mb-1">COSRX</p>
+            <h3 class="text-sm font-medium h-10 line-clamp-2 mb-2"><a href="#">Advanced Snail 96 Mucin Power Essence</a></h3>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="font-bold text-lg">£21.99</span>
+            </div>
+            <button class="w-full bg-black text-white font-bold py-2 hover:bg-gray-800 transition">Add to Basket</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secondary Banner -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-accent text-white rounded overflow-hidden flex flex-col md:flex-row items-center">
+          <div class="w-full md:w-1/2 p-10 md:p-16">
+            <h2 class="text-3xl font-bold mb-4">Join the Club</h2>
+            <p class="text-lg mb-6">Sign up to our newsletter for exclusive offers, new product launches, and beauty tips.</p>
+            <form class="flex gap-2">
+              <input type="email" placeholder="Email address" class="flex-1 text-black px-4 py-3 rounded font-medium focus:outline-none" />
+              <button class="bg-black text-white px-6 py-3 rounded font-bold hover:bg-gray-800 transition">Subscribe</button>
+            </form>
+          </div>
+          <div class="w-full md:w-1/2 h-64 md:h-auto bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop');"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-gray-900 text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h4 class="font-bold text-lg mb-4">Help & Information</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white transition">Delivery Options</a></li>
+            <li><a href="#" class="hover:text-white transition">Returns Policy</a></li>
+            <li><a href="#" class="hover:text-white transition">Help Centre</a></li>
+            <li><a href="#" class="hover:text-white transition">Track Order</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold text-lg mb-4">About Justmylook</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white transition">About Us</a></li>
+            <li><a href="#" class="hover:text-white transition">Careers</a></li>
+            <li><a href="#" class="hover:text-white transition">Student Discount</a></li>
+            <li><a href="#" class="hover:text-white transition">Terms & Conditions</a></li>
+          </ul>
+        </div>
+        <div class="col-span-2 md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <span class="text-xl font-bold">Trustpilot</span>
+            <span class="text-green-500">★★★★★</span>
+          </div>
+          <p class="text-sm text-gray-400 max-w-sm mb-6">Rated Excellent based on thousands of customer reviews.</p>
+          <div class="flex gap-4">
+            <!-- Social icons placeholders -->
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition">IG</a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition">FB</a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-gray-700 transition">TK</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+        <p>&copy; 2026 Justmylook. All rights reserved.</p>
+        <div class="flex gap-4 mt-4 md:mt-0">
+          <span>Visa</span>
+          <span>Mastercard</span>
+          <span>PayPal</span>
+          <span>Klarna</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
