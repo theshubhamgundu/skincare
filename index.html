@@ -70,34 +70,42 @@
 </head>
 <body class="bg-white text-black font-sans antialiased overflow-x-hidden">
 <!-- BEGIN: TopAnnouncementBar -->
-<aside class="bg-[#0e0e0e] text-white text-[11px] font-medium tracking-tight py-2 overflow-hidden relative select-none border-b border-black" data-purpose="announcement-ticker">
-<div class="animate-marquee flex items-center gap-6 whitespace-nowrap">
-<!-- Sequence 1 -->
-<div class="flex items-center gap-6">
-<span>✨ Free UK Delivery Over £30</span>
-<span class="text-white/40 text-xs">•</span>
-<span>🎁 Unlock Exclusive Gifts &amp; Offers <a class="font-bold underline hover:opacity-90 ml-0.5" href="#">Join miikorean Club →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>🏆 miikorean Beauty Awards: <a class="font-semibold underline hover:opacity-90 ml-0.5" href="#">See the winners →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>⚡ Express Shipping Available at Checkout</span>
-<span class="text-white/40 text-xs">•</span>
-<span>⭐ Rated 4.7 (Excellent) on Trustpilot</span>
-</div>
-<span class="text-white/40 text-xs">•</span>
-<!-- Sequence 2 -->
-<div class="flex items-center gap-6">
-<span>✨ Free UK Delivery Over £30</span>
-<span class="text-white/40 text-xs">•</span>
-<span>🎁 Unlock Exclusive Gifts &amp; Offers <a class="font-bold underline hover:opacity-90 ml-0.5" href="#">Join miikorean Club →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>🏆 miikorean Beauty Awards: <a class="font-semibold underline hover:opacity-90 ml-0.5" href="#">See the winners →</a></span>
-<span class="text-white/40 text-xs">•</span>
-<span>⚡ Express Shipping Available at Checkout</span>
-<span class="text-white/40 text-xs">•</span>
-<span>⭐ Rated 4.7 (Excellent) on Trustpilot</span>
-</div>
-</div>
+<aside class="bg-[#1f1f1f] text-white text-[11px] font-bold tracking-wider py-2.5 overflow-hidden relative select-none border-b border-black" data-purpose="announcement-slider">
+  <div class="flex justify-between items-center max-w-[1400px] mx-auto px-4 h-[28px]">
+    <!-- Left Sparkle -->
+    <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L12.7 9.3L20 10L12.7 10.7L12 18L11.3 10.7L4 10L11.3 9.3L12 2Z"/>
+    </svg>
+    
+    <!-- Messages Container -->
+    <div id="top-announcement-container" class="flex-1 flex justify-center items-center relative h-full">
+      <!-- Message 1: Delivery -->
+      <div class="top-announcement-slide absolute transition-opacity duration-500 opacity-100 flex items-center justify-center gap-2 w-full h-full">
+        <span class="font-extrabold tracking-wide uppercase text-[11px]">✨ FREE UK DELIVERY ON ORDERS OVER £30 ✨</span>
+      </div>
+      <!-- Message 2: Trustpilot -->
+      <div class="top-announcement-slide absolute transition-opacity duration-500 opacity-0 flex items-center justify-center gap-2.5 w-full h-full">
+        <svg class="w-5 h-5 text-[#00b67a]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+        <span class="capitalize font-semibold tracking-normal text-[13px]">Trustpilot</span>
+        <div class="flex gap-[2px]">
+          <div class="w-[18px] h-[18px] bg-[#00b67a] flex items-center justify-center text-white text-[12px]">★</div>
+          <div class="w-[18px] h-[18px] bg-[#00b67a] flex items-center justify-center text-white text-[12px]">★</div>
+          <div class="w-[18px] h-[18px] bg-[#00b67a] flex items-center justify-center text-white text-[12px]">★</div>
+          <div class="w-[18px] h-[18px] bg-[#00b67a] flex items-center justify-center text-white text-[12px]">★</div>
+          <div class="w-[18px] h-[18px] relative bg-[#dcdce6] flex items-center justify-center text-white text-[12px] overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 bg-[#00b67a] w-1/2"></div>
+            <span class="relative z-10">★</span>
+          </div>
+        </div>
+        <span class="uppercase font-extrabold tracking-wide text-[11px]">EXCELLENT 4.5 OUT OF 5</span>
+      </div>
+    </div>
+
+    <!-- Right Sparkle -->
+    <svg class="w-4 h-4 text-white shrink-0" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 2L12.7 9.3L20 10L12.7 10.7L12 18L11.3 10.7L4 10L11.3 9.3L12 2Z"/>
+    </svg>
+  </div>
 </aside>
 <!-- END: TopAnnouncementBar -->
 <!-- BEGIN: MainHeader -->
@@ -153,346 +161,550 @@
 <main>
 <!-- BEGIN: HeroSection -->
 <section class="relative bg-[#f8f8f8] overflow-hidden" data-purpose="hero-carousel">
-<div class="relative w-full">
-<img alt="Purito Serum Collection - Powerful Ingredients Targeted Results" class="w-full h-auto object-cover block" src="https://lh3.googleusercontent.com/aida/AEtjO1WrrBJqnK4wKWaBvl1NFAEEAEEldfJQ98a-dO6GA0k7A0---kiEBK0eNJg1DzFdIm6Pn6Fe-Y4EcoagIHejk_VXymntmG9KvLflrd94Wzm-o0pu9YlR3RLtmNoJEA5j_SZz14L0M6plGfHTPPKOri9uuipk2Vgpjt6xJUIOKkq6yRjwlenA2HF2GTX4VyQ9K9yofJr5rSbpt6owtkPK7g68U_ySIfwoApueYOfHEEiFODIKr_L1gDumvuJs"/>
+<div id="hero-slider" class="flex overflow-x-auto snap-x snap-mandatory no-scrollbar w-full">
+  <img alt="Banner 3" class="w-full flex-shrink-0 snap-center h-auto object-contain block" src="./public/banner_3.webp"/>
+  <img alt="Banner 1" class="w-full flex-shrink-0 snap-center h-auto object-contain block" src="./public/banner_1.jpeg"/>
+  <img alt="Banner 2" class="w-full flex-shrink-0 snap-center h-auto object-contain block" src="./public/banner_2.webp"/>
+</div>
 <!-- Obsidian Arrows -->
-<button aria-label="Previous slide" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/85 text-white flex items-center justify-center shadow-md hover:bg-black transition" type="button">
+<button id="prev-slide" aria-label="Previous slide" class="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/85 text-white flex items-center justify-center shadow-md hover:bg-black transition" type="button">
 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
 <path d="M15.75 19.5L8.25 12l7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
 </button>
-<button aria-label="Next slide" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/85 text-white flex items-center justify-center shadow-md hover:bg-black transition" type="button">
+<button id="next-slide" aria-label="Next slide" class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/85 text-white flex items-center justify-center shadow-md hover:bg-black transition" type="button">
 <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
 <path d="M8.25 4.5l7.5 7.5-7.5 7.5" stroke-linecap="round" stroke-linejoin="round"></path>
 </svg>
 </button>
 </div>
 <!-- Hero CTA -->
-<div class="text-center px-4 pb-6 pt-1 bg-gradient-to-b from-[#f8f8f8] to-white">
-<div class="flex justify-center mt-3">
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white font-medium text-sm px-7 py-2.5 rounded-full shadow-sm transition" href="#">
-            Shop Now <span class="ml-1.5 text-base">→</span>
-</a>
-</div>
+<div class="text-center px-4 pb-2 bg-white">
 <!-- Slider Pagination Bar Indicator -->
-<div class="flex justify-center items-center gap-1.5 mt-3">
+<div class="flex justify-center items-center gap-1.5 mt-1">
 <div class="w-6 h-[2.5px] bg-black rounded-full"></div>
 <div class="w-6 h-[2.5px] bg-gray-300 rounded-full"></div>
 </div>
 </div>
 </section>
 <!-- END: HeroSection -->
+<!-- BEGIN: ShopCategoriesGrid -->
+<section class="py-4 bg-white px-4" data-purpose="shop-categories-slider">
+  <h2 class="text-center text-[15px] font-bold text-black tracking-widest uppercase mb-4">
+    SHOP BY CATEGORY
+  </h2>
+  
+  <div class="relative w-full max-w-5xl mx-auto">
+    <!-- Horizontal Scrollable Container -->
+    <div id="category-slider" class="flex gap-4 overflow-x-auto no-scrollbar pb-2 snap-x snap-mandatory items-start">
+      
+      <!-- Category Card 1 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#b1cdee] to-[#e4eef9]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">Cleansers</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/SKIN0098_c5be32a6-b5a6-4031-ac9a-7ff2f362eb0f.png?format=webp&v=1787039726&width=533" alt="Cleansers" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+
+      <!-- Category Card 2 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#d5e8fb] to-[#f4f8fb]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">Serums</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/SKIN0005.png?format=webp&v=1781084971&width=533" alt="Serums" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+
+      <!-- Category Card 3 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#f2dac5] to-[#fcf4ef]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">SPF</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/MCUBE0003_fc96e6ef-b20c-4445-ad7b-898d83d7f2b5.png?format=webp&v=1785602539&width=533" alt="SPF" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+      
+      <!-- Category Card 4 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#d5e8fb] to-[#f4f8fb]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">Moisturizers</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/JML0067_1_4f32b76c-1edf-4537-907d-b4ba314e79de.png?format=webp&v=1787220091&width=533" alt="Moisturizers" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+
+      <!-- Category Card 5 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#b1cdee] to-[#e4eef9]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">Makeup</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/MCUBE0026.png?format=webp&v=1785602552&width=533" alt="Makeup" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+      
+      <!-- Category Card 6 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#d5e8fb] to-[#f4f8fb]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">Masks</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/CLQS0067.png?format=webp&v=1755249834&width=533" alt="Masks" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+      
+      <!-- Category Card 7 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#f2dac5] to-[#fcf4ef]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">Eye Care</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/UNI0073-1.png?format=webp&v=1758207014&width=533" alt="Eye Care" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+      
+      <!-- Category Card 8 -->
+      <a href="#" class="group relative flex-shrink-0 w-[260px] md:w-[320px] aspect-[4/5] rounded overflow-hidden snap-center block bg-gradient-to-b from-[#b1cdee] to-[#e4eef9]">
+        <h3 class="absolute top-6 left-0 right-0 text-center font-serif italic text-[28px] text-slate-700 z-10 font-light tracking-wide">Toners</h3>
+        <div class="absolute inset-0 pt-20 px-4 pb-4 flex items-end justify-center">
+          <img src="https://www.justmylook.com/cdn/shop/files/SKIN0044.png?format=webp&v=1760903139&width=533" alt="Toners" class="w-[85%] h-[85%] object-contain drop-shadow-xl group-hover:scale-105 transition-transform duration-500">
+        </div>
+      </a>
+    </div>
+
+    <!-- Scrollbar Indicator -->
+    <div class="mt-6 w-[80%] mx-auto h-[2px] bg-gray-200 relative">
+      <div class="absolute left-0 top-[-1px] h-[4px] w-1/4 bg-[#333]"></div>
+    </div>
+  </div>
+</section>
+<!-- END: ShopCategoriesGrid -->
+<!-- BEGIN: DiscoverSection -->
+<section class="py-4 bg-[#f6f6f6] px-4" data-purpose="discover-section">
+  <div class="max-w-[1400px] mx-auto relative">
+    <!-- Header -->
+    <h2 class="text-center text-4xl font-serif text-[#333] font-light mb-8 tracking-wide">
+      Discover...
+    </h2>
+    
+    <!-- Tabs -->
+    <div class="flex justify-center items-center gap-6 md:gap-10 mb-8 border-b border-gray-300 pb-0 relative max-w-4xl mx-auto overflow-x-auto no-scrollbar">
+      <button class="relative pb-3 text-[13px] font-bold text-[#222] tracking-wider uppercase flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg">🏷️</span> STEALS OF THE MONTH
+        <!-- Active underline gradient -->
+        <div class="absolute bottom-[-1px] left-0 w-full h-[2px] bg-gradient-to-r from-[#4ade80] to-[#38bdf8]"></div>
+      </button>
+      <button class="pb-3 text-[13px] font-medium text-gray-400 hover:text-gray-600 transition tracking-wider uppercase flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg grayscale opacity-70">🎁</span> GIFTING
+      </button>
+      <button class="pb-3 text-[13px] font-medium text-gray-400 hover:text-gray-600 transition tracking-wider uppercase flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg grayscale opacity-70">🔥</span> TRENDING PRODUCTS
+      </button>
+      <button class="pb-3 text-[13px] font-medium text-gray-400 hover:text-gray-600 transition tracking-wider uppercase flex items-center gap-2 whitespace-nowrap">
+        <span class="text-lg grayscale opacity-70">✨</span> NEW ARRIVALS
+      </button>
+    </div>
+
+    <!-- Product Slider -->
+    <div class="flex gap-4 overflow-x-auto no-scrollbar pb-6 snap-x snap-mandatory">
+      
+      <!-- Card 1 -->
+      <article class="flex-shrink-0 w-[280px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-100 hover:shadow-md transition">
+        <!-- Top Badges -->
+        <div class="absolute top-3 left-3 z-10">
+          <button class="flex items-center gap-1.5 bg-[#222] text-white text-[11px] font-medium px-2 py-1 rounded-[4px]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            999+
+          </button>
+        </div>
+        <div class="absolute top-3 right-3 flex flex-col gap-1.5 z-10 items-end">
+          <span class="bg-white border border-[#222] text-[#222] text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-[2px_2px_0px_#4ade80]">SALE</span>
+          <span class="bg-white border border-[#222] text-[#222] text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-[2px_2px_0px_#38bdf8]">VIRAL</span>
+        </div>
+        
+        <!-- Image -->
+        <div class="aspect-square p-6 relative">
+          <img src="https://www.justmylook.com/cdn/shop/files/REV0047.png?format=webp&v=1790766629&width=533" alt="Medicube Zero Pore Pad" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        
+        <!-- Content -->
+        <div class="px-4 pb-4 flex flex-col flex-1">
+          <!-- Steal of the month badge -->
+          <div class="mb-3 self-start">
+            <div class="border-[1.5px] border-transparent bg-clip-padding rounded relative before:absolute before:inset-[-1.5px] before:rounded before:bg-gradient-to-r before:from-[#c084fc] before:to-[#38bdf8] before:z-[-1]">
+              <span class="block bg-white text-[#222] text-[10px] font-medium px-2 py-0.5 italic flex items-center gap-1">
+                <span class="text-[#c084fc] not-italic">✨</span> Steal of the month <span class="text-[#38bdf8] not-italic">✨</span>
+              </span>
+            </div>
+          </div>
+          
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Medicube Zero Pore Pad 2.0 x70</h3>
+          
+          <!-- Rating -->
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(496 Reviews)</span>
+          </div>
+          
+          <!-- Price -->
+          <div class="mt-auto">
+            <div class="text-[11px] text-gray-400 line-through mb-0.5">RRP £23.90</div>
+            <div class="text-lg font-bold text-[#222]">£14.50</div>
+          </div>
+        </div>
+        
+        <!-- Add to Bag -->
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
+        </button>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="flex-shrink-0 w-[280px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-100 hover:shadow-md transition">
+        <!-- Top Badges -->
+        <div class="absolute top-3 left-3 z-10">
+          <button class="flex items-center gap-1.5 bg-[#222] text-white text-[11px] font-medium px-2 py-1 rounded-[4px]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            999+
+          </button>
+        </div>
+        <div class="absolute top-3 right-3 flex flex-col gap-1.5 z-10 items-end">
+          <span class="bg-white border border-[#222] text-[#222] text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-[2px_2px_0px_#c084fc]">SALE</span>
+        </div>
+        
+        <!-- Image -->
+        <div class="aspect-square p-6 relative">
+          <img src="https://www.justmylook.com/cdn/shop/files/UNI0071-1.png?format=webp&v=1758207014&width=533" alt="Skin1004 Madagascar Centella" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        
+        <!-- Content -->
+        <div class="px-4 pb-4 flex flex-col flex-1">
+          <!-- Steal of the month badge -->
+          <div class="mb-3 self-start">
+            <div class="border-[1.5px] border-transparent bg-clip-padding rounded relative before:absolute before:inset-[-1.5px] before:rounded before:bg-gradient-to-r before:from-[#c084fc] before:to-[#38bdf8] before:z-[-1]">
+              <span class="block bg-white text-[#222] text-[10px] font-medium px-2 py-0.5 italic flex items-center gap-1">
+                <span class="text-[#c084fc] not-italic">✨</span> Steal of the month <span class="text-[#38bdf8] not-italic">✨</span>
+              </span>
+            </div>
+          </div>
+          
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Skin1004 Madagascar Centella Light Cleansing Oil 200ml</h3>
+          
+          <!-- Rating -->
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(222 Reviews)</span>
+          </div>
+          
+          <!-- Price -->
+          <div class="mt-auto">
+            <div class="text-[11px] text-gray-400 line-through mb-0.5">RRP £20.00</div>
+            <div class="text-lg font-bold text-[#222]">£9.99</div>
+          </div>
+        </div>
+        
+        <!-- Add to Bag -->
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
+        </button>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="flex-shrink-0 w-[280px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-100 hover:shadow-md transition">
+        <!-- Top Badges -->
+        <div class="absolute top-3 left-3 z-10">
+          <button class="flex items-center gap-1.5 bg-[#222] text-white text-[11px] font-medium px-2 py-1 rounded-[4px]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            292
+          </button>
+        </div>
+        <div class="absolute top-3 right-3 flex flex-col gap-1.5 z-10 items-end">
+          <span class="bg-white border border-[#222] text-[#222] text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-[2px_2px_0px_#38bdf8]">SALE</span>
+        </div>
+        
+        <!-- Image -->
+        <div class="aspect-square p-6 relative">
+          <img src="https://www.justmylook.com/cdn/shop/files/UNI0072-1.png?format=webp&v=1758207014&width=533" alt="Justmylook Korean Beauty Skincare Edit" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        
+        <!-- Content -->
+        <div class="px-4 pb-4 flex flex-col flex-1">
+          <!-- Steal of the month badge -->
+          <div class="mb-3 self-start">
+            <div class="border-[1.5px] border-transparent bg-clip-padding rounded relative before:absolute before:inset-[-1.5px] before:rounded before:bg-gradient-to-r before:from-[#c084fc] before:to-[#38bdf8] before:z-[-1]">
+              <span class="block bg-white text-[#222] text-[10px] font-medium px-2 py-0.5 italic flex items-center gap-1">
+                <span class="text-[#c084fc] not-italic">✨</span> Steal of the month <span class="text-[#38bdf8] not-italic">✨</span>
+              </span>
+            </div>
+          </div>
+          
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Justmylook Korean Beauty Skincare Edit</h3>
+          
+          <!-- Rating -->
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(55 Reviews)</span>
+          </div>
+          
+          <!-- Price -->
+          <div class="mt-auto">
+            <div class="text-[11px] text-gray-400 line-through mb-0.5">RRP £120.00</div>
+            <div class="text-lg font-bold text-[#222]">£34.99</div>
+          </div>
+        </div>
+        
+        <!-- Add to Bag -->
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
+        </button>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="flex-shrink-0 w-[280px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-100 hover:shadow-md transition">
+        <!-- Top Badges -->
+        <div class="absolute top-3 left-3 z-10">
+          <button class="flex items-center gap-1.5 bg-[#222] text-white text-[11px] font-medium px-2 py-1 rounded-[4px]">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            802
+          </button>
+        </div>
+        <div class="absolute top-3 right-3 flex flex-col gap-1.5 z-10 items-end">
+          <span class="bg-white border border-[#222] text-[#222] text-[10px] font-bold px-2 py-1 uppercase tracking-wider shadow-[2px_2px_0px_#4ade80]">SALE</span>
+        </div>
+        
+        <!-- Image -->
+        <div class="aspect-square p-6 relative">
+          <img src="https://www.justmylook.com/cdn/shop/files/JML0067_1_4f32b76c-1edf-4537-907d-b4ba314e79de.png?format=webp&v=1787220091&width=533" alt="Clinique Moisture Surge 100H Auto-Replenishing Hydrator 75ml" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        
+        <!-- Content -->
+        <div class="px-4 pb-4 flex flex-col flex-1">
+          <!-- Steal of the month badge -->
+          <div class="mb-3 self-start">
+            <div class="border-[1.5px] border-transparent bg-clip-padding rounded relative before:absolute before:inset-[-1.5px] before:rounded before:bg-gradient-to-r before:from-[#c084fc] before:to-[#38bdf8] before:z-[-1]">
+              <span class="block bg-white text-[#222] text-[10px] font-medium px-2 py-0.5 italic flex items-center gap-1">
+                <span class="text-[#c084fc] not-italic">✨</span> Steal of the month <span class="text-[#38bdf8] not-italic">✨</span>
+              </span>
+            </div>
+          </div>
+          
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Clinique Moisture Surge 100H Auto-Replenishing Hydrator 75ml</h3>
+          
+          <!-- Rating -->
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(195 Reviews)</span>
+          </div>
+          
+          <!-- Price -->
+          <div class="mt-auto">
+            <div class="text-[11px] text-gray-400 line-through mb-0.5">RRP £57.00</div>
+            <div class="text-lg font-bold text-[#222]">£26.99</div>
+          </div>
+        </div>
+        
+        <!-- Add to Bag -->
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
+        </button>
+      </article>
+
+    </div>
+  </div>
+</section>
+<!-- END: DiscoverSection -->
+
+<!-- BEGIN: ShopByBrandSection -->
+<section class="py-4 bg-white border-t border-gray-100 px-4" data-purpose="shop-by-brand">
+  <div class="max-w-[1400px] mx-auto relative">
+    <h2 class="text-center text-[18px] font-bold text-black tracking-wide uppercase mb-4">
+      SHOP BY BRAND
+    </h2>
+    
+    <div class="flex gap-4 overflow-x-auto no-scrollbar pb-6 snap-x snap-mandatory">
+      
+      <!-- Brand Card 1: Beauty of Joseon -->
+      <a href="#" class="flex-shrink-0 w-[240px] border border-gray-200 bg-white snap-center group hover:shadow-md transition flex flex-col">
+        <div class="w-full aspect-[4/5] bg-white flex items-center justify-center p-6 overflow-hidden">
+          <img src="https://logo.clearbit.com/beautyofjoseon.com" onerror="this.onerror=null; this.src='public/brands/beauty-of-joseon.png';" alt="Beauty of Joseon Logo Color" class="w-full h-full object-contain">
+        </div>
+        <div class="h-16 flex items-center justify-center p-3 border-t border-gray-100">
+          <img src="public/brands/beauty-of-joseon.png" alt="Beauty of Joseon" class="max-h-8 max-w-full object-contain">
+        </div>
+      </a>
+      
+      <!-- Brand Card 2: COSRX -->
+      <a href="#" class="flex-shrink-0 w-[240px] border border-gray-200 bg-white snap-center group hover:shadow-md transition flex flex-col">
+        <div class="w-full aspect-[4/5] bg-white flex items-center justify-center p-6 overflow-hidden">
+          <img src="https://logo.clearbit.com/cosrx.com" onerror="this.onerror=null; this.src='public/brands/cosrx.png';" alt="COSRX Logo Color" class="w-full h-full object-contain">
+        </div>
+        <div class="h-16 flex items-center justify-center p-3 border-t border-gray-100">
+          <img src="public/brands/cosrx.png" alt="COSRX" class="max-h-8 max-w-full object-contain">
+        </div>
+      </a>
+      
+      <!-- Brand Card 3: Anua -->
+      <a href="#" class="flex-shrink-0 w-[240px] border border-gray-200 bg-white snap-center group hover:shadow-md transition flex flex-col">
+        <div class="w-full aspect-[4/5] bg-white flex items-center justify-center p-6 overflow-hidden">
+          <img src="https://logo.clearbit.com/anua.us" onerror="this.onerror=null; this.src='public/brands/anua.png';" alt="Anua Logo Color" class="w-full h-full object-contain">
+        </div>
+        <div class="h-16 flex items-center justify-center p-3 border-t border-gray-100">
+          <img src="public/brands/anua.png" alt="Anua" class="max-h-8 max-w-full object-contain">
+        </div>
+      </a>
+      
+      <!-- Brand Card 4: SKIN1004 -->
+      <a href="#" class="flex-shrink-0 w-[240px] border border-gray-200 bg-white snap-center group hover:shadow-md transition flex flex-col">
+        <div class="w-full aspect-[4/5] bg-white flex items-center justify-center p-6 overflow-hidden">
+          <img src="https://logo.clearbit.com/skin1004.com" onerror="this.onerror=null; this.src='public/brands/skin1004.png';" alt="SKIN1004 Logo Color" class="w-full h-full object-contain">
+        </div>
+        <div class="h-16 flex items-center justify-center p-3 border-t border-gray-100">
+          <img src="public/brands/skin1004.png" alt="SKIN1004" class="max-h-8 max-w-full object-contain">
+        </div>
+      </a>
+      
+      <!-- Brand Card 5: Round Lab -->
+      <a href="#" class="flex-shrink-0 w-[240px] border border-gray-200 bg-white snap-center group hover:shadow-md transition flex flex-col">
+        <div class="w-full aspect-[4/5] bg-white flex items-center justify-center p-6 overflow-hidden">
+          <img src="https://logo.clearbit.com/roundlab.com" onerror="this.onerror=null; this.src='public/brands/round-lab.png';" alt="Round Lab Logo Color" class="w-full h-full object-contain">
+        </div>
+        <div class="h-16 flex items-center justify-center p-3 border-t border-gray-100">
+          <img src="public/brands/round-lab.png" alt="Round Lab" class="max-h-8 max-w-full object-contain">
+        </div>
+      </a>
+      
+      <!-- Brand Card 6: Isntree -->
+      <a href="#" class="flex-shrink-0 w-[240px] border border-gray-200 bg-white snap-center group hover:shadow-md transition flex flex-col">
+        <div class="w-full aspect-[4/5] bg-white flex items-center justify-center p-6 overflow-hidden">
+          <img src="https://logo.clearbit.com/isntree.com" onerror="this.onerror=null; this.src='public/brands/isntree.png';" alt="Isntree Logo Color" class="w-full h-full object-contain">
+        </div>
+        <div class="h-16 flex items-center justify-center p-3 border-t border-gray-100">
+          <img src="public/brands/isntree.png" alt="Isntree" class="max-h-8 max-w-full object-contain">
+        </div>
+      </a>
+      
+    </div>
+
+    <!-- Scrollbar Indicator -->
+    <div class="mt-4 w-full h-[2px] bg-gray-200 relative flex items-center justify-between">
+      <div class="absolute left-0 top-0 h-[3px] w-1/4 bg-[#333]"></div>
+      
+      <div class="absolute right-0 -top-6 flex gap-2">
+        <button class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 bg-white"><svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg></button>
+        <button class="w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center hover:bg-gray-100 bg-white"><svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END: ShopByBrandSection -->
+
 <!-- BEGIN: CuratedForYouSection -->
-<section class="py-8 bg-white border-t border-gray-100" data-purpose="curated-products-carousel">
-<h2 class="serif-title text-center text-2xl font-bold text-black tracking-tight mb-4">
-        Curated For You
-      </h2>
-<!-- Tabs -->
-<div class="flex justify-center items-center space-x-6 text-sm mb-6">
-<button class="font-semibold text-black relative pb-1 border-b-2 border-black" type="button">
-          Holy Grails
+<section class="py-4 bg-white px-4 border-t border-gray-100" data-purpose="curated-for-you">
+  <div class="max-w-[1400px] mx-auto relative">
+    <h2 class="text-center text-3xl font-serif text-[#333] font-light mb-4 tracking-wide">
+      Curated For You
+    </h2>
+    
+    <div class="flex gap-4 overflow-x-auto no-scrollbar pb-6 snap-x snap-mandatory">
+      
+      <!-- Card 1 -->
+      <article class="flex-shrink-0 w-[240px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-200 hover:shadow-md transition">
+        <div class="aspect-square p-6 relative bg-[#fafafa]">
+          <img src="https://www.justmylook.com/cdn/shop/files/MCUBE0026.png?format=webp&v=1785602552&width=533" alt="Medicube Collagen Jelly Cream" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        <div class="px-4 py-4 flex flex-col flex-1">
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Medicube Collagen Jelly Cream</h3>
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(120 Reviews)</span>
+          </div>
+          <div class="mt-auto">
+            <div class="text-lg font-bold text-[#222]">£25.00</div>
+          </div>
+        </div>
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
         </button>
-<div class="w-[1px] h-4 bg-gray-200"></div>
-<button class="text-gray-500 hover:text-black pb-1" type="button">
-          New Arrivals
+      </article>
+
+      <!-- Card 2 -->
+      <article class="flex-shrink-0 w-[240px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-200 hover:shadow-md transition">
+        <div class="aspect-square p-6 relative bg-[#fafafa]">
+          <img src="https://www.justmylook.com/cdn/shop/files/SKIN0005.png?format=webp&v=1781084971&width=533" alt="COSRX Retinol" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        <div class="px-4 py-4 flex flex-col flex-1">
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">COSRX Retinol 0.1 Cream</h3>
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(340 Reviews)</span>
+          </div>
+          <div class="mt-auto">
+            <div class="text-lg font-bold text-[#222]">£18.50</div>
+          </div>
+        </div>
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
         </button>
-</div>
-<!-- Horizontal Scrollable Product Cards -->
-<div class="flex gap-4 overflow-x-auto no-scrollbar px-4 pb-4 snap-x">
-<!-- Product 1 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              COMBINATION SKIN
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="MANYO Pure Cleansing Oil" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1Wm2wzg1baQ7Znp1wjgfnZC5OpmmlA4NqS2h6NA-51wzQBOWEIX1Debe-efXUKNBJvMRD_TAYREIGKHYbo_nURH7xhn89rRUd3dv2vPVQa8peY7MaHJb0HAiAvxbzkCeiNpWEcPTlY42Y8ksb6vySUo2JBhoG3VQ5g0FFXO-WKrCecQjJ3f6JG9YcLadrH9wc3XWBVDAo8AltGVrGLn_0WzyvvDpigViaJOklbSjGCc0qBao4poYPa3pTk4"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded shadow-xs border border-gray-200">
-              CRUELTY-FREE
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">MANYO</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Pure Cleansing Oil (200ml)</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(31)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,200.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Product 2 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              REDNESS &amp; POST-ACNE
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="ANUA Azelaic Acid 10 Hyaluron Soothing" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1XIHhM2FKIFWCv-XRsWt7HDpmwRTPWSmWz8J8XsJaHhdmCF_ISp0i0OCwJ5H8a3Nk2HUaKbozMsTyXtYa8DX_eS7OYdmWY6EMvVjpHmYQIh7iYmUCKB4iT4LncnfpOZRaROh4SQ6hbeaKZDsBmi9neD4ov82zCjPHbCHCxVxTVRuw6QGOAwdpn23AZadU5y-hl1ZM_XynGpQBxO-Ee6CToxAQPAGIG_1pv4n56-7frwI1zqsEdwl3u_bNA"/>
-<div class="absolute bottom-2 left-2 flex gap-1">
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">VEGAN</span>
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">CRUELTY-FREE</span>
-</div>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">ANUA</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Azelaic Acid 10 Hyaluron Soothing...</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(47)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,700.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Product 3 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              BESTSELLER
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="S.NATURE Aqua Squalane Moisturizing Cream" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1WScPn1dwM_AbDQ_uWYvkhCxPl55xuEtI7H1FprEszs4a3Hsqy0V44Fse72yHaaMVzATToDZrKOBZsQ1fiPpmzUEetpeh1jPAoO452IoHn0hHj2OyLv9fXCIc9ynNwYelc3FRD6ijHCGycRwPw8xG_JynTfhUiIsi3ozBkyQs4suOe1luSnAvPNyVSbH4hEMAIyJjJ8jfypes2sIcwjLL_7jRnGYf_NK62SLYx3el78JbAelDXcWNj7wkpf"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">
-              VEGAN
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">S.NATURE</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Aqua Squalane Moisturizing Cream</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(89)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,500.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-</div>
-<!-- Section Footer Divider and View All Pill Button -->
-<div class="mt-4 px-6 text-center">
-<div class="w-48 h-[1px] bg-gray-200 mx-auto mb-4"></div>
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-xs font-medium px-8 py-2.5 rounded-full shadow-sm transition" href="#">
-          View All <span class="ml-1 text-sm">→</span>
-</a>
-</div>
+      </article>
+      
+      <!-- Card 3 -->
+      <article class="flex-shrink-0 w-[240px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-200 hover:shadow-md transition">
+        <div class="aspect-square p-6 relative bg-[#fafafa]">
+          <img src="https://www.justmylook.com/cdn/shop/files/CLQS0067.png?format=webp&v=1755249834&width=533" alt="Beauty of Joseon Mask" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        <div class="px-4 py-4 flex flex-col flex-1">
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Beauty of Joseon Centella Asiatica Calming Mask</h3>
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(89 Reviews)</span>
+          </div>
+          <div class="mt-auto">
+            <div class="text-lg font-bold text-[#222]">£4.99</div>
+          </div>
+        </div>
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
+        </button>
+      </article>
+      
+      <!-- Card 4 -->
+      <article class="flex-shrink-0 w-[240px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-200 hover:shadow-md transition">
+        <div class="aspect-square p-6 relative bg-[#fafafa]">
+          <img src="https://www.justmylook.com/cdn/shop/files/MCUBE0003_fc96e6ef-b20c-4445-ad7b-898d83d7f2b5.png?format=webp&v=1785602539&width=533" alt="Round Lab Sun Cream" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        <div class="px-4 py-4 flex flex-col flex-1">
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Round Lab Birch Juice Moisturizing Sun Cream</h3>
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(1,024 Reviews)</span>
+          </div>
+          <div class="mt-auto">
+            <div class="text-lg font-bold text-[#222]">£21.00</div>
+          </div>
+        </div>
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
+        </button>
+      </article>
+
+      <!-- Card 5 -->
+      <article class="flex-shrink-0 w-[240px] bg-white rounded flex flex-col snap-start relative group shadow-sm border border-gray-200 hover:shadow-md transition">
+        <div class="aspect-square p-6 relative bg-[#fafafa]">
+          <img src="https://www.justmylook.com/cdn/shop/files/SKIN0098_c5be32a6-b5a6-4031-ac9a-7ff2f362eb0f.png?format=webp&v=1787039726&width=533" alt="Anua Cleansing Oil" class="w-full h-full object-contain mix-blend-multiply">
+        </div>
+        <div class="px-4 py-4 flex flex-col flex-1">
+          <h3 class="text-[13px] text-[#222] font-medium leading-tight mb-2 line-clamp-2">Anua Heartleaf Pore Control Cleansing Oil</h3>
+          <div class="flex items-center gap-1 mb-2">
+            <div class="flex text-[#222] text-[12px]">★★★★★</div>
+            <span class="text-xs text-gray-500">(512 Reviews)</span>
+          </div>
+          <div class="mt-auto">
+            <div class="text-lg font-bold text-[#222]">£16.50</div>
+          </div>
+        </div>
+        <button class="w-full bg-[#2a2a2a] hover:bg-black text-white text-[11px] font-bold uppercase tracking-widest py-3 transition mt-auto rounded-b">
+          ADD TO BAG
+        </button>
+      </article>
+
+    </div>
+  </div>
 </section>
 <!-- END: CuratedForYouSection -->
-<!-- BEGIN: MostSearchedSection -->
-<section class="py-8 px-4 bg-white" data-purpose="most-searched-categories">
-<h2 class="serif-title text-center text-2xl font-bold text-black tracking-tight mb-6">
-        Most Searched
-      </h2>
-<div class="grid grid-cols-3 gap-y-6 gap-x-4 max-w-sm mx-auto text-center">
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="C-Beauty Collection" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1UtmubctKTJmVSqjVIzEFTr2pK5Y12RZ8O321t0xHBuimXAg5588SIdbrL-vMhJT5G6FP8NCu6IY-o0SEyzeq4kJlf09REaNMX6bBohpemety3dp7hxzGEagHAC7_6F4mTedk5LtdGFOX7MhCxEe33vATjBuwE5voCL2ItfBRbUN3IPyxLOtmQmtN26KKpO9iqY4gfJYxMV2Bd1FSbIvGngY9K3rrgmZ4rDMCB6Hk9U8kwPTzltuETyFsH1"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">C-Beauty</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Collectibles" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VTLl-kQfetXAuLf9mwXd7W1McahJHX5H_VvfuAPXCg1kUh4n-CDl7A9kOCggg15f4H63uwKKzgTfdAvbsSfWO0Db1WDYEIh6ehAEcW4QjoTRPAEar-kZhNlnRGkLem1qTwE9zMPkUhFh2LS_l7iAetyODozgP4_u5OKnnvv4vsKm5Zr6EHgBUnGcHrErfRIJBmi7lRN61FVColp4EdYh8jobse78sn_Ngt8LIsRJ1inX_GjjoaPROQwwWR"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Collectibles</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Retinol" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1X1_oXauWlAiHHQRluif8vln901wix_ciLfhBXjlf-uTGyMMqTHWMIOIcFAODJPXnF1TaWaKBl3TuIqwHYK2mvq6uvUC2yvVcDw4ud6vAqBxTaCjiZWVEf1TV9oGi4Mc1oe6Pta6Jj4qESOJjOIGHCOCM04izED6JV7Jx1cMKuVVEvah-y7svlGtd-bhh08wJ712mFMVQ6gVsocq8jQ-1_8pMhp7n2uNIP9XChlXXWLsDvgWjBCvi8SlIJl"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Retinol</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Sunscreen" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XbrpSVTWE2C4ypx5Ph5UcMBr1gayj2JAtaD3udDWr1QX2BiiR0PZjbmt0SfAeZN_c133iSUIw5l9GjrnWdGkztiUUqAVAVJiRMNa_SuuxwQQSI1rlZXE2RtAiUCtfKBIJHyMRS4RsKNAUBSqNaC81ytuj5HpPlPwlYeBU_tG1rH6x8AEByofZ1wobSpoXppTD1zK4lB8_krcXW6jfzQv629rpmndKwYkx3kkYOu6BTDWCAwJXXnDcABYI"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">SPF</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Facial Masks" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XsUDILMtKpNQWo1qC01EG3KwEZMu7GWbuLTbZsy_O8Wy1JSwM-2ngnkz4hj4f__3TAWJObMCHbvyADqyjkOk021pcRm5Vf5UvyYAH8HEdfSMDSOjz12CelTG4y3lNV9YA3yj_EAku6_RCoGA_S2PPVfMlDt-hmI1_xqmrjjnymgKMgjXGMQRl0aFzCnes_hfSkPtFzOuxkKiqflJB83zAYucBpLeZsKouNXcpmQBs_zJ8Q2LSQCwWgjNQL"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Masks</span>
-</a>
-<a class="group flex flex-col items-center" href="#">
-<div class="w-20 h-20 rounded-2xl overflow-hidden shadow-xs border border-gray-200 transition group-hover:scale-105">
-<img alt="Toner" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1Xq7RLBshdbPh6auTD81tQNWSTPmPDaAnTg6he4pYr5e3xTyvSbScaEFjqpweXuWl4YbuPBbL1nMIriCTIbYvdTUnow-gUm42vMSjosB7fOOq3fqN3P7s95ml63k94-UVCrtDybAabJE-8zoNN-VqyJqcUxMRcbsmgX9hhGJtestYlFkXrq-EETzywkabY1C9BuVcsfww_iA45ijCqRZ05fvSUR45QLBkqCKgSJEcRdfyxwKoRAQJogmLfB"/>
-</div>
-<span class="serif-title text-xs font-semibold text-black mt-2 group-hover:opacity-70 transition-colors">Toner</span>
-</a>
-</div>
-</section>
-<!-- END: MostSearchedSection -->
-<!-- BEGIN: ProblemSolverCard -->
-<section class="py-6 px-4" data-purpose="interactive-skin-concern-box">
-<div class="bg-[#f7f7f7] border border-gray-300 rounded-[32px] p-6 text-center max-w-sm mx-auto shadow-sm">
-<p class="text-xs text-neutral-600 font-semibold mb-2 tracking-wide uppercase">
-          What are you looking for today?
-        </p>
-<h3 class="serif-title text-black text-2xl font-bold leading-tight">
-          I'm looking for<br/>help with
-        </h3>
-<div class="inline-flex items-center gap-1.5 border-b-2 border-black pb-1 mt-1 mb-6 cursor-pointer hover:opacity-70 transition-opacity">
-<span class="serif-title text-2xl font-bold text-black tracking-tight">pigmentation</span>
-<svg class="w-4 h-4 text-black" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
-<path d="M19.5 8.25l-7.5 7.5-7.5-7.5" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</div>
-<div>
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-sm font-medium px-7 py-2.5 rounded-full shadow transition" href="#">
-            Shop Now <span class="ml-1 text-base">→</span>
-</a>
-</div>
-</div>
-</section>
-<!-- END: ProblemSolverCard -->
-<!-- BEGIN: ShopByCategorySection -->
-<section class="py-8 bg-white border-t border-gray-100" data-purpose="shop-by-category-carousel">
-<h2 class="serif-title text-center text-2xl font-bold text-black tracking-tight mb-4">
-        Shop By Category
-      </h2>
-<div class="flex justify-center items-center space-x-5 text-sm mb-6">
-<button class="font-semibold text-black pb-1 border-b-2 border-black" type="button">
-          Skincare
-        </button>
-<div class="w-[1px] h-4 bg-gray-200"></div>
-<button class="text-gray-500 hover:text-black pb-1" type="button">
-          Make Up
-        </button>
-<div class="w-[1px] h-4 bg-gray-200"></div>
-<button class="text-gray-500 hover:text-black pb-1" type="button">
-          Hair &amp; Body
-        </button>
-</div>
-<div class="flex gap-4 overflow-x-auto no-scrollbar px-4 pb-4 snap-x">
-<!-- Category Product 1 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="S.NATURE Aqua Rice Cleansing Oil" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1XVe0MbVS0SRJ_qIn2wLS1xEA4xrDw8gQa45fDgT24a4011mXPjOTFjOM0zIAwUMeI509LECI69Gj21bNdCMzyCTgb5b7pVugth0GqBlxvPPci_pdlaAW55AhoOU2bXXD8_2uzNmZjZO1CBgrD6_FqhmZeUEQV_U4CwQqDTgbDEPI7Qkar9Dsv7Tw-aUQ6tMrGbrdbd2LkO-l6DnCwfLRuFdIIpoKusdZh604Pbke8QTU7uve_KaPMG2w8"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">
-              VEGAN
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">S.NATURE</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Aqua Rice Cleansing Oil (200ml)</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(5)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,200.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Category Product 2 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              OILY SKIN
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="ANUA Heartleaf Pore Deep Cleansing Foam" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1VaX7K099A6RzQ-6Pfp5mlL3ExsM4qV9BwaL3EgM7aHAzwNHwDYQeSS27uj9-NZDP65d5l67CJcR3t8EG3jTfD01G0i-UbRxADrJAnb_ty0C3-1iPeM40nlwYhde10vpRK_25hMDSy1jnPrh70X0NlNDUE17kZnPo4FrYtp5_iJPHtWsLHe7JTcRsR7bIvop4QKB6BHrHn_VZyIIxz768ewqEsZ5U1_qv_9vAHqrtsKtZSezZYEYfo8o8c"/>
-<div class="absolute bottom-2 left-2 flex gap-1">
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">VEGAN</span>
-<span class="bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">CRUELTY-FREE</span>
-</div>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">ANUA</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Heartleaf Quercetinol Pore Deep Cleansing...</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(247)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 1,500.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-<!-- Category Product 3 -->
-<article class="flex-shrink-0 w-[170px] snap-start" data-purpose="product-card">
-<div class="relative bg-[#fafafa] border border-gray-200 rounded-xl overflow-hidden aspect-square mb-2.5 flex items-center justify-center p-2">
-<span class="absolute top-2 left-2 bg-black text-white text-[8px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
-              DRY SKIN
-            </span>
-<button class="absolute top-2 right-2 w-7 h-7 rounded-full bg-white flex items-center justify-center text-black shadow-sm hover:opacity-70">
-<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
-<path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" stroke-linecap="round" stroke-linejoin="round"></path>
-</svg>
-</button>
-<img alt="S.NATURE Aqua Squalane Moisturizing Cream" class="w-full h-full object-contain mix-blend-multiply" src="https://lh3.googleusercontent.com/aida/AEtjO1WScPn1dwM_AbDQ_uWYvkhCxPl55xuEtI7H1FprEszs4a3Hsqy0V44Fse72yHaaMVzATToDZrKOBZsQ1fiPpmzUEetpeh1jPAoO452IoHn0hHj2OyLv9fXCIc9ynNwYelc3FRD6ijHCGycRwPw8xG_JynTfhUiIsi3ozBkyQs4suOe1luSnAvPNyVSbH4hEMAIyJjJ8jfypes2sIcwjLL_7jRnGYf_NK62SLYx3el78JbAelDXcWNj7wkpf"/>
-<span class="absolute bottom-2 left-2 bg-white/95 text-neutral-800 text-[8px] font-semibold px-1.5 py-0.5 rounded border border-gray-200">
-              VEGAN
-            </span>
-</div>
-<div class="px-0.5">
-<h3 class="serif-title text-[11px] font-bold tracking-wider text-black uppercase">S.NATURE</h3>
-<p class="text-xs text-neutral-800 line-clamp-2 mt-0.5 h-8">Aqua Squalane Moisturizing Cream</p>
-<div class="flex items-center gap-1 mt-1 text-[#f6c343] text-xs">
-<span>★★★★★</span>
-<span class="text-gray-500 text-[10px]">(89)</span>
-</div>
-<div class="flex items-center justify-between mt-2">
-<span class="text-xs font-semibold text-black">Rs. 2,700.00</span>
-<button class="text-[10px] font-medium bg-[#f2f2f2] hover:bg-neutral-200 text-black px-2.5 py-1 rounded-full border border-gray-300">
-                Notify me
-              </button>
-</div>
-</div>
-</article>
-</div>
-<!-- Section Footer Divider and View All Pill Button -->
-<div class="mt-4 px-6 text-center">
-<div class="w-48 h-[1px] bg-gray-200 mx-auto mb-4"></div>
-<a class="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-xs font-medium px-8 py-2.5 rounded-full shadow-sm transition" href="#">
-          View All <span class="ml-1 text-sm">→</span>
-</a>
-</div>
-</section>
-<!-- END: ShopByCategorySection -->
+
 <!-- BEGIN: TrustpilotReviewsSection -->
-<section class="py-10 px-4 bg-[#f8f8f8] border-y border-gray-200" data-purpose="customer-reviews-section">
+<section class="py-4 px-4 bg-[#f8f8f8] border-y border-gray-200" data-purpose="customer-reviews-section">
 <h2 class="serif-title italic text-center text-3xl font-normal text-black tracking-tight mb-3">
         loved by miikorean cherubs
       </h2>
@@ -691,4 +903,64 @@
 </div>
 </footer>
 <!-- END: CompleteFooter -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Hero Slider Logic
+    const slider = document.getElementById('hero-slider');
+    const prevBtn = document.getElementById('prev-slide');
+    const nextBtn = document.getElementById('next-slide');
+    let currentIndex = 0;
+    const slideCount = 3;
+    let autoSlideInterval;
+
+    function goToSlide(index) {
+      if(index < 0) index = slideCount - 1;
+      if(index >= slideCount) index = 0;
+      currentIndex = index;
+      if(slider) {
+        const width = slider.clientWidth;
+        slider.scrollTo({ left: width * currentIndex, behavior: 'smooth' });
+      }
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, 3000);
+    }
+
+    if(nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        goToSlide(currentIndex + 1);
+        resetAutoSlide();
+      });
+    }
+    
+    if(prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        goToSlide(currentIndex - 1);
+        resetAutoSlide();
+      });
+    }
+
+    // Start auto-slide
+    resetAutoSlide();
+
+    // Top Announcement Slider Logic
+    const announcementSlides = document.querySelectorAll('.top-announcement-slide');
+    let currentAnnouncement = 0;
+    if(announcementSlides.length > 0) {
+      setInterval(() => {
+        announcementSlides[currentAnnouncement].classList.remove('opacity-100');
+        announcementSlides[currentAnnouncement].classList.add('opacity-0');
+        
+        currentAnnouncement = (currentAnnouncement + 1) % announcementSlides.length;
+        
+        announcementSlides[currentAnnouncement].classList.remove('opacity-0');
+        announcementSlides[currentAnnouncement].classList.add('opacity-100');
+      }, 3000);
+    }
+  });
+</script>
 </body></html>
